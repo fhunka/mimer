@@ -8,6 +8,7 @@ import 'ui/autoload/styles';
 import './less/main.less';
 import { Main } from './components/main';
 import { Query } from './components/queries';
+import { QueryPage } from './components/queries';
 
 import template from './components/index.html';
 import issues_index_template from './components/issues/index.html';
@@ -119,7 +120,7 @@ app.controller('Query', function ($scope, $route, $http, $routeParams) {
         //console.log($element);
         //const domNode = "";
         //render(<Query />, document.getElementById('app2app'));
-        render(<Query title="Queries" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<QueryPage title="Queries" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;

@@ -43,7 +43,7 @@ import {
   EuiForm
 } from "@elastic/eui";
 
-export class Query extends React.Component {
+export class QueryList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
