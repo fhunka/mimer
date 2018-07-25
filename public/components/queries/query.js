@@ -220,6 +220,7 @@ export class QueryPage extends React.Component {
 						<EuiFlexItem>
 							<EuiFieldText fullWidth name="name" />
 						</EuiFlexItem>
+					</EuiFlexGroup>
 				</EuiFormRow>
 
 				<EuiFormRow label="Query" 
