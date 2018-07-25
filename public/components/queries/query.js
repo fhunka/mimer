@@ -236,46 +236,66 @@ export class QueryPage extends React.Component {
 		<div>
 		    <Fragment>
 			<EuiForm>
-				<EuiFormRow
-					fullWidth
-					label="Name"
-					helpText="I am some friendly help text."
-					>
+				
 
 					<EuiFlexGroup>
 						<EuiFlexItem>
-							<EuiFieldText fullWidth name="name" />
+							<EuiFormRow
+								fullWidth
+								label="Name"
+								helpText="I am some friendly help text."
+								>
+								<EuiFieldText fullWidth name="name" />
+							</EuiFormRow>
+						</EuiFlexItem>
+						
+						<EuiFlexItem grow={false}>
+							<EuiFormRow
+								fullWidth
+								label="Name"
+								helpText="I am some friendly help text."
+								>
+								<EuiSwitch 
+									id={item._id + "_active"}
+									name={item._id} 
+									onChange={this.handleActive} 
+									checked={active}
+									/>
+							</EuiFormRow>
+						</EuiFlexItem>
+						
+						<EuiFlexItem grow={false}>
+							<EuiFormRow
+								fullWidth
+								label="Name"
+								helpText="I am some friendly help text."
+								>
+								<EuiSwitch 
+									id={item._id + "_scheduled"}
+									name={item._id} 
+									onChange={this.handleScheduled} 
+									checked={scheduled}
+								/>
+							</EuiFormRow>
 						</EuiFlexItem>
 						
 						<EuiFlexItem>
-							<EuiSwitch 
-							id={item._id + "_active"}
-							name={item._id} 
-							onChange={this.handleActive} 
-							checked={active}
-							/>
-						</EuiFlexItem>
-						
-						<EuiFlexItem>
-							<EuiSwitch 
-							id={item._id + "_scheduled"}
-							name={item._id} 
-							onChange={this.handleScheduled} 
-							checked={scheduled}
-							/>
-						</EuiFlexItem>
-						
-						<EuiFlexItem>
-							<EuiRange
-							min={0}
-							max={10}
-							name="range"
-							id="range"
-							/>
+							<EuiFormRow
+								fullWidth
+								label="Name"
+								helpText="I am some friendly help text."
+								>
+								<EuiRange
+									min={0}
+									max={10}
+									name="range"
+									id="range"
+								/>
+							</EuiFormRow>
 						</EuiFlexItem>
 						
 					</EuiFlexGroup>
-				</EuiFormRow>
+
 
 				<EuiFormRow label="Query" 
 				fullWidth
