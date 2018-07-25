@@ -40,7 +40,8 @@ import {
   EuiCodeBlock,
   EuiFieldText,
   EuiForm,
-  EuiRange
+  EuiRange,
+  EuiFlexGrid
 } from "@elastic/eui";
 
 export class QueryPage extends React.Component {
