@@ -246,22 +246,23 @@ export class QueryPage extends React.Component {
 						</EuiFlexItem>
 						
 						<EuiFlexItem grow={false}>
-							<EuiFormRow
-								fullWidth
-								label="Active"
-								helpText="Only active queries are pulled."
-								>
-								<EuiSwitch 
-									id={item._id + "_active"}
-									name={item._id} 
-									onChange={this.handleActive} 
-									checked={active}
-									/>
-							</EuiFormRow>
-						</EuiFlexItem>
-						
-						<EuiFlexItem grow={false}>
-							<EuiFormRow
+							<EuiFlexGrid columns={3}>
+							     <EuiFlexItem>
+									<EuiFormRow
+										fullWidth
+										label="Active"
+										helpText="Only active queries are pulled."
+										>
+										<EuiSwitch 
+											id={item._id + "_active"}
+											name={item._id} 
+											onChange={this.handleActive} 
+											checked={active}
+											/>
+									</EuiFormRow>
+								</EuiFlexItem>
+								<EuiFlexItem grow={false}>
+									<EuiFormRow
 								fullWidth
 								label="Scheduled"
 								helpText="Scheduled queries are repeated."
@@ -289,7 +290,8 @@ export class QueryPage extends React.Component {
 								/>
 							</EuiFormRow>
 						</EuiFlexItem>
-						
+						</EuiFlexGrid>
+						</EuiFlexItem>
 					</EuiFlexGroup>
 
 
