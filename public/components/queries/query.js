@@ -305,7 +305,7 @@ export class QueryPage extends React.Component {
 								helpText="Severity if matches are found."
 								>
 								<EuiRange
-								          id={makeId()}
+								          id={item._id + "_range"}
 								          min={0}
 								          max={10}
 								          step={1}
