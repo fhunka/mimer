@@ -45,7 +45,11 @@ import {
 export class QueryPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+		query: ""
+	};
+
+	this.handleQuery = this.handleQuery.bind(this);
   }
 
   componentDidMount() {
@@ -59,6 +63,11 @@ export class QueryPage extends React.Component {
   }
 
   //ACTIONS
+  handleQuery = (value) => {
+    this.setState({ value });
+    //console.log({value});
+  };
+
   saveQuery = (button) => {
 
    var data = {
@@ -159,7 +168,7 @@ export class QueryPage extends React.Component {
 	render() {
 
     const { title } = this.props;
-	const query = "{}";
+	const { query } = this.state;
 
 	return (
       <EuiPage>
@@ -200,7 +209,7 @@ export class QueryPage extends React.Component {
 		
 		<div>
 		    <EuiFlexGroup>
-		      <EuiFlexItem grow={false}>
+		      <EuiFlexItem>
 		
 				
 				<Fragment>
@@ -208,10 +217,10 @@ export class QueryPage extends React.Component {
 			<EuiForm>
 				<EuiFormRow
 		   fullWidth
-		         	 label="Text field"
+		         	 label="Name"
 		          	helpText="I am some friendly help text."
 		        	>
-		          <EuiFieldText fullWidth name="first" />
+		          <EuiFieldText fullWidth name="name" />
 		        </EuiFormRow>
 
 			<EuiFormRow label="Query" fullWidth>
@@ -219,8 +228,8 @@ export class QueryPage extends React.Component {
 		        mode="javascript"
 		        theme="github"
 		        width="100%"
-		        value={this.state.value}
-		        onChange={this.handleTextChange}
+		        value={this.state.query}
+		        onChange={this.handleQuery}
 		        setOptions={{
 		          fontSize: '14px',
 		          enableBasicAutocompletion: true,
