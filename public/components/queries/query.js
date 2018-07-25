@@ -87,6 +87,7 @@ export class QueryPage extends React.Component {
 
   //ACTIONS
   onChange = e => {
+	console.log(e.target.value);
     this.setState({
       value: e.target.value,
     });
@@ -319,9 +320,8 @@ export class QueryPage extends React.Component {
 								          onChange={this.onChange}
 								          aria-label="Use aria labels when no actual label is in use"
 								          aria-describedby="levelsHelp"
-								          compressed
-										showLabels
-										showValue
+										showTicks={true}
+										tickInterval={1}
 								          levels={this.levels}
 								        />
 								</Fragment>
