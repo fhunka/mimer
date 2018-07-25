@@ -56,14 +56,19 @@ export class QueryPage extends React.Component {
 
 	this.levels = [
 		{
-	        min: 0,
-	        max: 600,
+	        min: 7,
+	        max: 10,
 	        color: 'danger'
 	      },
 	      {
-	        min: 600,
-	        max: 2000,
+	        min: 3,
+	        max: 6,
 	        color: 'success'
+	      },
+		{
+	        min: 0,
+	        max: 3,
+	        color: 'warning'
 	      }
 	    ];
 
@@ -315,6 +320,8 @@ export class QueryPage extends React.Component {
 								          aria-label="Use aria labels when no actual label is in use"
 								          aria-describedby="levelsHelp"
 								          compressed
+										showLabels
+										showValue
 								          levels={this.levels}
 								        />
 								</Fragment>
