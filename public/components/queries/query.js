@@ -126,30 +126,25 @@ export class QueryPage extends React.Component {
 
    var data = {
 	params: {
-		"timestamp": moment(),
-		"updated_at": moment(),
-		"name": "test" + moment(),
-		"query": "{}",
-		"active": true,
-		"scheduled": true
+		"query": this.state.query
 	}
    };
    var config = {};
 
-    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries2", data ).then((resp) => {
+    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_validate", data ).then((resp) => {
 
   	console.log("---");
 	console.log(resp);  
-	this.setState({
-          btnSave: "Save",
-          btnSaveLoading: false
-        });
+	//this.setState({
+    //      btnSave: "Save",
+    //      btnSaveLoading: false
+    //    });
 
 	}).catch((e) => {
-	this.setState({
-        btnSave: "Error",
-        btnSaveLoading: false
-    });
+	//this.setState({
+    //    btnSave: "Error",
+    //    btnSaveLoading: false
+    //});
 		console.log(e);
 	});
 
@@ -336,7 +331,7 @@ export class QueryPage extends React.Component {
 					        <EuiButton
 							  fill
 							  isDisabled={true}
-					          onClick={() => window.alert('Button clicked')}
+								onClick={this.saveQuery}
 					        >
 								Save
 					        </EuiButton>
@@ -346,7 +341,7 @@ export class QueryPage extends React.Component {
 					        <EuiButton
 					          fill
 								color="secondary"
-					          onClick={() => window.alert('Button clicked')}
+								onClick={this.validateQuery}
 					        >
 								Validate
 					        </EuiButton>
