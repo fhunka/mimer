@@ -122,14 +122,13 @@ export class QueryPage extends React.Component {
 
   };
 
-  validateQuery = (button) => {
+	validateQuery = (button) => {
 
-   var data = {
-	params: {
+	var data = {
 		"query": this.state.query
-	}
-   };
-   var config = {};
+	};
+	
+	var config = {};
 
     this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_validate", data ).then((resp) => {
 
