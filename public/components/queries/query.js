@@ -47,7 +47,8 @@ export class QueryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-		query: ""
+		query: "",
+		valid: false
 	};
 
 	this.handleQuery = this.handleQuery.bind(this);
@@ -134,10 +135,9 @@ export class QueryPage extends React.Component {
 
   	console.log("---");
 	console.log(resp);  
-	//this.setState({
-    //      btnSave: "Save",
-    //      btnSaveLoading: false
-    //    });
+	this.setState({
+		valid: resp.data.resp.valid
+	});
 
 	}).catch((e) => {
 	//this.setState({
@@ -183,12 +183,12 @@ export class QueryPage extends React.Component {
 	render() {
 
     const { title } = this.props;
-	const { query } = this.state;
+	const { query, valid } = this.state;
 	
 	const active = true;
 	const scheduled = true;
 	
-	const item = { "_id": 1 }
+	const item = { "_id": "abc123" }
 
 	return (
       <EuiPage>
@@ -329,7 +329,7 @@ export class QueryPage extends React.Component {
 					<EuiFlexItem grow={false}>
 					        <EuiButton
 							  fill
-							  isDisabled={true}
+							  isDisabled={valid}
 								onClick={this.saveQuery}
 					        >
 								Save

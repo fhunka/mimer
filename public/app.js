@@ -54,6 +54,12 @@ uiRoutes.when('/', {
         resolve: {},
         reloadOnSearch: false
 })
+.when('/queries/:name', {
+        template: queries_show_template,
+        controller: 'Query',
+        resolve: {},
+        reloadOnSearch: false
+})
 .when('/issues', {
 	template: issues_index_template,
 	controller: 'Issues',
