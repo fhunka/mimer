@@ -314,8 +314,6 @@ export class QueryPage extends React.Component {
 								          onChange={this.onChange}
 								          aria-label="Use aria labels when no actual label is in use"
 								          aria-describedby="levelsHelp"
-								          showLabels
-								          showValue
 								          compressed
 								          levels={this.levels}
 								        />
