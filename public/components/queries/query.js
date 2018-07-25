@@ -63,8 +63,8 @@ export class QueryPage extends React.Component {
   }
 
   //ACTIONS
-  handleQuery = (value) => {
-    this.setState({ value });
+  handleQuery = (query) => {
+    this.setState({ query });
     //console.log({value});
   };
 

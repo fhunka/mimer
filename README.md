@@ -1,4 +1,6 @@
 README
+https://www.freeformatter.com/json-escape.html
+
 /kibana
 yarn es snapshot
 
