@@ -41,7 +41,8 @@ import {
   EuiFieldText,
   EuiForm,
   EuiRange,
-  EuiFlexGrid
+  EuiFlexGrid,
+  EuiFormHelpText
 } from "@elastic/eui";
 
 export class QueryPage extends React.Component {
@@ -49,8 +50,22 @@ export class QueryPage extends React.Component {
     super(props);
     this.state = {
 		query: "",
-		valid: false
+		valid: false,
+		value: '3'
 	};
+
+	this.levels = [
+		{
+	        min: 0,
+	        max: 600,
+	        color: 'danger'
+	      },
+	      {
+	        min: 600,
+	        max: 2000,
+	        color: 'success'
+	      }
+	    ];
 
 	this.handleQuery = this.handleQuery.bind(this);
   }
@@ -66,6 +81,12 @@ export class QueryPage extends React.Component {
   }
 
   //ACTIONS
+  onChange = e => {
+    this.setState({
+      value: e.target.value,
+    });
+  };
+
   handleQuery = (query) => {
     this.setState({ query });
     //console.log({value});
@@ -246,7 +267,7 @@ export class QueryPage extends React.Component {
 							</EuiFormRow>
 						</EuiFlexItem>
 						
-						<EuiFlexItem grow={false}>
+						<EuiFlexItem>
 							<EuiFlexGrid columns={3}>
 							     <EuiFlexItem>
 									<EuiFormRow
@@ -284,11 +305,19 @@ export class QueryPage extends React.Component {
 								helpText="Severity if matches are found."
 								>
 								<EuiRange
-									min={0}
-									max={10}
-									name="range"
-									id="range"
-								/>
+								          id={makeId()}
+								          min={0}
+								          max={10}
+								          step={1}
+								          value={this.state.value}
+								          onChange={this.onChange}
+								          aria-label="Use aria labels when no actual label is in use"
+								          aria-describedby="levelsHelp"
+								          showLabels
+								          showInput
+								          compressed
+								          levels={this.levels}
+								        />
 							</EuiFormRow>
 						</EuiFlexItem>
 						</EuiFlexGrid>
