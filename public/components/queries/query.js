@@ -41,7 +41,7 @@ import {
   EuiForm
 } from "@elastic/eui";
 
-export class QueryList extends React.Component {
+export class QueryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -52,6 +52,9 @@ export class QueryList extends React.Component {
        FOR EXAMPLE PURPOSES ONLY.  There are much better ways to
        manage state and update your UI than this.
     */
+    const { httpClient } = this.props;
+    const { params } = this.props;
+
   }
 
   renderLogo() {
@@ -86,6 +89,8 @@ export class QueryList extends React.Component {
   } 
 
   render() {
+
+    const { title } = this.props;
 
     return (
       <EuiPage>
@@ -122,13 +127,12 @@ export class QueryList extends React.Component {
                 <h1>Queries</h1>
               </EuiTitle>
             </EuiPageContentHeader>
-				
+	    <EuiPageContentBody>
+		<h1>Test</h1>
             </EuiPageContentBody>
           </EuiPageContent>
         </EuiPageBody>
       </EuiPage>
-
-
     );
   }
   

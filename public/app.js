@@ -7,8 +7,8 @@ import { render, unmountComponentAtNode } from 'react-dom';
 import 'ui/autoload/styles';
 import './less/main.less';
 import { Main } from './components/main';
-import { Query } from './components/queries';
-import { QueryPage } from './components/queries';
+import { QueryList, QueryPage } from './components/queries';
+//import { QueryPage } from './components/queries';
 
 import template from './components/index.html';
 import issues_index_template from './components/issues/index.html';
@@ -44,13 +44,13 @@ uiRoutes.when('/', {
 })
 .when('/queries', {
         template: queries_index_template,
-        controller: 'Query',
+        controller: 'Queries',
         resolve: {},
         reloadOnSearch: false
 })
 .when('/queries/new', {
         template: queries_show_template,
-        controller: 'Queries',
+        controller: 'Query',
         resolve: {},
         reloadOnSearch: false
 })
@@ -107,7 +107,7 @@ app.controller('Queries', function ($scope, $route, $http, $routeParams) {
         //console.log($element);
         //const domNode = "";
         //render(<Query />, document.getElementById('app2app'));
-        render(<Query title="Queries" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<QueryList title="Queries" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;
@@ -120,7 +120,7 @@ app.controller('Query', function ($scope, $route, $http, $routeParams) {
         //console.log($element);
         //const domNode = "";
         //render(<Query />, document.getElementById('app2app'));
-        render(<QueryPage title="Queries" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<QueryPage title="Create Query" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;
