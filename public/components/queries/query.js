@@ -334,6 +334,8 @@ export class QueryPage extends React.Component {
 				<EuiFlexGroup>
 					<EuiFlexItem grow={false}>
 					        <EuiButton
+							  fill
+							  isDisabled={true}
 					          onClick={() => window.alert('Button clicked')}
 					        >
 								Save
