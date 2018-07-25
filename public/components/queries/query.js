@@ -63,8 +63,8 @@ export class QueryPage extends React.Component {
   }
 
   //ACTIONS
-  handleQuery = (value) => {
-    this.setState({ value });
+  handleQuery = (query) => {
+    this.setState({ query });
     //console.log({value});
   };
 
@@ -213,7 +213,6 @@ export class QueryPage extends React.Component {
 		
 				
 				<Fragment>
-		          <EuiSpacer />
 			<EuiForm>
 				<EuiFormRow
 		   fullWidth
@@ -246,10 +245,13 @@ export class QueryPage extends React.Component {
 				
 				</EuiFlexItem>
 		      <EuiFlexItem>
+			<EuiFormRow label="Formatted" fullWidth>
 				<EuiCodeBlock language="json">
-	              {query}
+	              {JSON.stringify(query)}
 	            </EuiCodeBlock>
-		      </EuiFlexItem>
+		      	</EuiFormRow>
+			
+			</EuiFlexItem>
 		    </EuiFlexGroup>
 		  </div>
 		
