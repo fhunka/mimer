@@ -208,21 +208,26 @@ export class QueryPage extends React.Component {
 	    <EuiPageContentBody>
 		
 		<div>
-		    <EuiFlexGroup>
-		      <EuiFlexItem>
-		
-				
-				<Fragment>
+		    <Fragment>
 			<EuiForm>
 				<EuiFormRow
-		   fullWidth
-		         	 label="Name"
-		          	helpText="I am some friendly help text."
-		        	>
-		          <EuiFieldText fullWidth name="name" />
-		        </EuiFormRow>
+					fullWidth
+					label="Name"
+					helpText="I am some friendly help text."
+					>
 
-			<EuiFormRow label="Query" fullWidth>
+					<EuiFlexGroup>
+						<EuiFlexItem>
+							<EuiFieldText fullWidth name="name" />
+						</EuiFlexItem>
+				</EuiFormRow>
+
+				<EuiFormRow label="Query" 
+				fullWidth
+				>
+				
+					<EuiFlexGroup>
+						<EuiFlexItem>
 				<EuiCodeEditor
 		        mode="javascript"
 		        theme="github"
@@ -237,23 +242,18 @@ export class QueryPage extends React.Component {
 		        }}
 		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
 		      />
+						</EuiFlexItem>
+						<EuiFlexItem>
+							<EuiCodeBlock language="json">
+				              {JSON.stringify(query)}
+				            </EuiCodeBlock>
+						</EuiFlexItem>
+					</EuiFlexGroup>
 		  	</EuiFormRow>
 
 			</EuiForm>
-		        </Fragment>
-				
-				
-				</EuiFlexItem>
-		      <EuiFlexItem>
-			<EuiFormRow label="Formatted" fullWidth>
-				<EuiCodeBlock language="json">
-	              {JSON.stringify(query)}
-	            </EuiCodeBlock>
-		      	</EuiFormRow>
-			
-			</EuiFlexItem>
-		    </EuiFlexGroup>
-		  </div>
+			</Fragment>
+		</div>
 		
             </EuiPageContentBody>
           </EuiPageContent>
