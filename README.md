@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # jag_testar_ett_plugin
 
 > a test
@@ -35,3 +36,6 @@ See the [kibana contributing guide](https://github.com/elastic/kibana/blob/maste
     Run the server tests using mocha.
 
 For more information about any of these commands run `yarn ${task} --help`. For a full list of tasks checkout the `package.json` file, or run `yarn run`.
+=======
+# mimer
+>>>>>>> 77196f394561a46d4294774120a3061680d359bc
