@@ -331,7 +331,7 @@ export class QueryPage extends React.Component {
 					<EuiFlexItem grow={false}>
 					        <EuiButton
 							  fill
-							  isDisabled={valid}
+							  isDisabled={!valid}
 								onClick={this.saveQuery}
 					        >
 								Save
