@@ -252,8 +252,8 @@ export class QueryPage extends React.Component {
 						<EuiFlexItem grow={false}>
 							<EuiFormRow
 								fullWidth
-								label="Name"
-								helpText="I am some friendly help text."
+								label="Active"
+								helpText="Only active queries are pulled."
 								>
 								<EuiSwitch 
 									id={item._id + "_active"}
@@ -267,8 +267,8 @@ export class QueryPage extends React.Component {
 						<EuiFlexItem grow={false}>
 							<EuiFormRow
 								fullWidth
-								label="Name"
-								helpText="I am some friendly help text."
+								label="Scheduled"
+								helpText="Scheduled queries are repeated."
 								>
 								<EuiSwitch 
 									id={item._id + "_scheduled"}
@@ -282,8 +282,8 @@ export class QueryPage extends React.Component {
 						<EuiFlexItem>
 							<EuiFormRow
 								fullWidth
-								label="Name"
-								helpText="I am some friendly help text."
+								label="Severity"
+								helpText="Severity if matches are found."
 								>
 								<EuiRange
 									min={0}
@@ -297,12 +297,13 @@ export class QueryPage extends React.Component {
 					</EuiFlexGroup>
 
 
-				<EuiFormRow label="Query" 
-				fullWidth
-				>
+				
 				
 					<EuiFlexGroup>
 						<EuiFlexItem>
+						<EuiFormRow label="Query" 
+						fullWidth
+						>
 				<EuiCodeEditor
 		        mode="javascript"
 		        theme="github"
@@ -317,15 +318,39 @@ export class QueryPage extends React.Component {
 		        }}
 		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
 		      />
+		</EuiFormRow>
 						</EuiFlexItem>
 						<EuiFlexItem>
+						<EuiFormRow label="Formatted query" 
+						fullWidth
+						>
 							<EuiCodeBlock language="json">
 				              {JSON.stringify(query)}
 				            </EuiCodeBlock>
+				</EuiFormRow>
 						</EuiFlexItem>
 					</EuiFlexGroup>
-		  	</EuiFormRow>
+		  	
+				<EuiFlexItemGroup>
+					<EuiFlexItem grow={false}>
+					        <EuiButton
+					          onClick={() => window.alert('Button clicked')}
+					        >
+								Save
+					        </EuiButton>
+					      </EuiFlexItem>
 
+					      <EuiFlexItem grow={false}>
+					        <EuiButton
+					          fill
+								color="secondary"
+					          onClick={() => window.alert('Button clicked')}
+					        >
+								Validate
+					        </EuiButton>
+					      </EuiFlexItem>
+				</EuiFlexGroup>
+				
 			</EuiForm>
 			</Fragment>
 		</div>
