@@ -304,6 +304,7 @@ export class QueryPage extends React.Component {
 								label="Severity"
 								helpText="Severity if matches are found."
 								>
+								<Fragment>
 								<EuiRange
 								          id={item._id + "_range"}
 								          min={0}
@@ -318,6 +319,7 @@ export class QueryPage extends React.Component {
 								          compressed
 								          levels={this.levels}
 								        />
+								</Fragment>
 							</EuiFormRow>
 						</EuiFlexItem>
 						</EuiFlexGrid>
