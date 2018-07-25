@@ -39,7 +39,8 @@ import {
   EuiFlexItem,
   EuiCodeBlock,
   EuiFieldText,
-  EuiForm
+  EuiForm,
+  EuiRange
 } from "@elastic/eui";
 
 export class QueryPage extends React.Component {
@@ -220,6 +221,34 @@ export class QueryPage extends React.Component {
 						<EuiFlexItem>
 							<EuiFieldText fullWidth name="name" />
 						</EuiFlexItem>
+						
+						<EuiFlexItem>
+							<EuiSwitch 
+							id={item._id + "_active"}
+							name={item._id} 
+							onChange={this.handleChecked} 
+							checked={active}
+							/>
+						</EuiFlexItem>
+						
+						<EuiFlexItem>
+							<EuiSwitch 
+							id={item._id + "_active"}
+							name={item._id} 
+							onChange={this.handleChecked} 
+							checked={active}
+							/>
+						</EuiFlexItem>
+						
+						<EuiFlexItem>
+							<EuiRange
+							min={0}
+							max={10}
+							name="range"
+							id="range"
+							/>
+						</EuiFlexItem>
+						
 					</EuiFlexGroup>
 				</EuiFormRow>
 
