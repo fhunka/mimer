@@ -331,7 +331,7 @@ export class QueryPage extends React.Component {
 						</EuiFlexItem>
 					</EuiFlexGroup>
 		  	
-				<EuiFlexItemGroup>
+				<EuiFlexGroup>
 					<EuiFlexItem grow={false}>
 					        <EuiButton
 					          onClick={() => window.alert('Button clicked')}
