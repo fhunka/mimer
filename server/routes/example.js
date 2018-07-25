@@ -181,4 +181,28 @@ export default function (server) {
 	}
   });
 
+  server.route({
+    path: '/api/jag_testar_ett_plugin/queries_validate',
+    method: 'POST',
+    handler: function(req, reply) {
+		console.log("--- req --")
+		console.log(req.payload);
+		dataCluster.callWithRequest(req,'indices.validateQuery',{
+			body: req.payload.query
+		}).then(function (resp) {
+			//console.log(resp);//.aggregations.hosts.buckets);
+			reply({
+				ok: true,
+				resp: resp
+			});
+		}).catch(function (resp) {	
+			console.error("Error while deleting document",resp);
+			reply({
+				ok: false,
+				resp: resp
+			});
+		});	
+	}
+  });
+
 }

@@ -35,6 +35,7 @@ import {
   EuiFormRow,
   EuiCodeEditor,
   EuiButton,
+  EuiFlexGroup,
   EuiFlexItem,
   EuiCodeBlock,
   EuiFieldText,
@@ -56,6 +57,73 @@ export class QueryPage extends React.Component {
     const { params } = this.props;
 
   }
+
+  //ACTIONS
+  saveQuery = (button) => {
+
+   var data = {
+	params: {
+		"timestamp": moment(),
+		"updated_at": moment(),
+		"name": "test" + moment(),
+		"query": "{}",
+		"active": true,
+		"scheduled": true
+	}
+   };
+   var config = {};
+
+    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries2", data ).then((resp) => {
+      
+  	console.log("---");
+	console.log(resp);  
+	this.setState({
+          btnSave: "Save",
+          btnSaveLoading: false
+        });
+
+	}).catch((e) => {
+	this.setState({
+        btnSave: "Error",
+        btnSaveLoading: false
+    });
+		console.log(e);
+	});
+
+  };
+
+  validateQuery = (button) => {
+
+   var data = {
+	params: {
+		"timestamp": moment(),
+		"updated_at": moment(),
+		"name": "test" + moment(),
+		"query": "{}",
+		"active": true,
+		"scheduled": true
+	}
+   };
+   var config = {};
+
+    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries2", data ).then((resp) => {
+
+  	console.log("---");
+	console.log(resp);  
+	this.setState({
+          btnSave: "Save",
+          btnSaveLoading: false
+        });
+
+	}).catch((e) => {
+	this.setState({
+        btnSave: "Error",
+        btnSaveLoading: false
+    });
+		console.log(e);
+	});
+
+  };
 
   renderLogo() {
     return (
@@ -88,11 +156,12 @@ export class QueryPage extends React.Component {
     );
   } 
 
-  render() {
+	render() {
 
     const { title } = this.props;
+	const query = "{}";
 
-    return (
+	return (
       <EuiPage>
         <EuiHeader>
             <EuiHeaderSectionItem border="right">
@@ -128,12 +197,58 @@ export class QueryPage extends React.Component {
               </EuiTitle>
             </EuiPageContentHeader>
 	    <EuiPageContentBody>
-		<h1>Test</h1>
+		
+		<div>
+		    <EuiFlexGroup>
+		      <EuiFlexItem grow={false}>
+		
+				
+				<Fragment>
+		          <EuiSpacer />
+			<EuiForm>
+				<EuiFormRow
+		   fullWidth
+		         	 label="Text field"
+		          	helpText="I am some friendly help text."
+		        	>
+		          <EuiFieldText fullWidth name="first" />
+		        </EuiFormRow>
+
+			<EuiFormRow label="Query" fullWidth>
+				<EuiCodeEditor
+		        mode="javascript"
+		        theme="github"
+		        width="100%"
+		        value={this.state.value}
+		        onChange={this.handleTextChange}
+		        setOptions={{
+		          fontSize: '14px',
+		          enableBasicAutocompletion: true,
+		          enableSnippets: true,
+		          enableLiveAutocompletion: true,
+		        }}
+		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
+		      />
+		  	</EuiFormRow>
+
+			</EuiForm>
+		        </Fragment>
+				
+				
+				</EuiFlexItem>
+		      <EuiFlexItem>
+				<EuiCodeBlock language="json">
+	              {query}
+	            </EuiCodeBlock>
+		      </EuiFlexItem>
+		    </EuiFlexGroup>
+		  </div>
+		
             </EuiPageContentBody>
           </EuiPageContent>
         </EuiPageBody>
       </EuiPage>
-    );
-  }
+	);
+	}
   
 };
