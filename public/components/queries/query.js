@@ -191,7 +191,9 @@ export class QueryPage extends React.Component {
     const { title } = this.props;
 	const { query } = this.state;
 	
-	const active, scheduled = true;
+	const active = true;
+	const scheduled = true;
+	
 	const item = { "_id": 1 }
 
 	return (
