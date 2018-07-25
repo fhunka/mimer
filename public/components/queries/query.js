@@ -69,6 +69,26 @@ export class QueryPage extends React.Component {
     //console.log({value});
   };
 
+  handleActive = (value) => {
+	//pageOfItems
+	//const items = this.state.pageOfItems
+	//items[this.state.pageOfItems.map(item => item._id).indexOf(value.target.name)]._source.active = value.target.checked;
+	//this.setState({items});
+	//this.updateDocument(items[this.state.pageOfItems.map(item => item._id).indexOf(value.target.name)]);
+  };
+
+  handleScheduled = (value) => {
+  	//this.test({});
+	//const items = this.state.items
+    //    items[this.state.items.map(item => item._id).indexOf(value.target.name)]._source.scheduled = value.target.checked;
+    //    //const item = items[this.state.items.map(item => item._id).indexOf(value.target.name)];
+	////console.log(item); 
+    //    this.setState({items});
+    //
+	//this.updateDocument(items[this.state.items.map(item => item._id).indexOf(value.target.name)]);
+	//this.test; 
+ };
+
   saveQuery = (button) => {
 
    var data = {
@@ -170,6 +190,9 @@ export class QueryPage extends React.Component {
 
     const { title } = this.props;
 	const { query } = this.state;
+	
+	const active, scheduled = true;
+	const item = { "_id": 1 }
 
 	return (
       <EuiPage>
@@ -226,17 +249,17 @@ export class QueryPage extends React.Component {
 							<EuiSwitch 
 							id={item._id + "_active"}
 							name={item._id} 
-							onChange={this.handleChecked} 
+							onChange={this.handleActive} 
 							checked={active}
 							/>
 						</EuiFlexItem>
 						
 						<EuiFlexItem>
 							<EuiSwitch 
-							id={item._id + "_active"}
+							id={item._id + "_scheduled"}
 							name={item._id} 
-							onChange={this.handleChecked} 
-							checked={active}
+							onChange={this.handleScheduled} 
+							checked={scheduled}
 							/>
 						</EuiFlexItem>
 						
