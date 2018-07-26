@@ -149,7 +149,7 @@ export class QueryPage extends React.Component {
 	var data = { 
 		"index": index,
 		"type": type,
-		"id": 
+		"id": id
    	};
 	
 	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_get", data).then((resp) => {
