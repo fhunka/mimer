@@ -228,7 +228,7 @@ export class QueryPage extends React.Component {
 	const active = true;
 	const scheduled = true;
 	
-	const item = this.state.item;
+	const {item} = this.state;
 
 	return (
       <EuiPage>
@@ -367,7 +367,7 @@ export class QueryPage extends React.Component {
 						fullWidth
 						>
 							<EuiCodeBlock language="json">
-				              { item }
+				              { JSON.parse(item) }
 				            </EuiCodeBlock>
 				</EuiFormRow>
 						</EuiFlexItem>
