@@ -97,6 +97,9 @@ export class QueryPage extends React.Component {
     const { httpClient } = this.props;
     const { params } = this.props;
 
+	if ( params.name ) {
+		
+	}
 	
   }
 
@@ -130,16 +133,36 @@ export class QueryPage extends React.Component {
   };
 
   handleActive = (value) => {
-	const item = this.state.item
+	const item = this.state.item;
 	item.active = value.target.checked;
 	this.setState( { item } );
   };
 
   handleScheduled = (value) => {
-	const item = this.state.item
+	const item = this.state.item;
 	item.scheduled = value.target.checked;
 	this.setState( { item } );
  };
+
+  getQueries(index, type, id) {
+	
+	var data = { 
+		"index": index,
+		"type": type,
+		"id": 
+   	};
+	
+	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_get", data).then((resp) => {
+		const item = this.state.item;
+		
+		item = resp.data.resp._source;
+		
+		this.setState({item});
+		
+	}).catch((e) => {
+		console.log(e);
+	});
+  };
 
   saveQuery = (button) => {
 
@@ -349,10 +372,6 @@ export class QueryPage extends React.Component {
 						</EuiFlexGrid>
 						</EuiFlexItem>
 					</EuiFlexGroup>
-1360013296123
-1331698658276340
-
-				
 				
 					<EuiFlexGroup>
 						<EuiFlexItem>
