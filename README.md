@@ -9,3 +9,6 @@ node scripts/makelogs
 
 kibana-extra/mimer
 yarn start
+
+kibana-extra/mimer
+git pull

@@ -49,9 +49,10 @@ export class QueryPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-		query: "",
+		query: "{}",
 		valid: false,
-		value: '3'
+		value: '3',
+		item: {}
 	};
 
 	this.levels = [
@@ -82,6 +83,14 @@ export class QueryPage extends React.Component {
     */
     const { httpClient } = this.props;
     const { params } = this.props;
+
+	const item = {
+		query: this.state.query,
+		severity: this.state.value
+		valid: this.state.valid
+	}
+
+	this.setState({ item });
 
   }
 
@@ -218,7 +227,7 @@ export class QueryPage extends React.Component {
 	const active = true;
 	const scheduled = true;
 	
-	const item = { "_id": "abc123" }
+	const item = this.state.item;
 
 	return (
       <EuiPage>
@@ -282,7 +291,7 @@ export class QueryPage extends React.Component {
 										helpText="Only active queries are pulled."
 										>
 										<EuiSwitch 
-											id={item._id + "_active"}
+											id="active"
 											name={item._id} 
 											onChange={this.handleActive} 
 											checked={active}
@@ -296,7 +305,7 @@ export class QueryPage extends React.Component {
 								helpText="Scheduled queries are repeated."
 								>
 								<EuiSwitch 
-									id={item._id + "_scheduled"}
+									id="scheduled"
 									name={item._id} 
 									onChange={this.handleScheduled} 
 									checked={scheduled}
@@ -312,7 +321,7 @@ export class QueryPage extends React.Component {
 								>
 								<Fragment>
 								<EuiRange
-								          id={item._id + "_range"}
+								          id="range"
 								          min={0}
 								          max={10}
 								          step={1}
@@ -320,9 +329,6 @@ export class QueryPage extends React.Component {
 								          onChange={this.onChange}
 								          aria-label="Use aria labels when no actual label is in use"
 								          aria-describedby="levelsHelp"
-										showTicks={true}
-										tickInterval={1}
-								          levels={this.levels}
 								        />
 								</Fragment>
 							</EuiFormRow>
