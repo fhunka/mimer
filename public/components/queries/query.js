@@ -150,15 +150,10 @@ export class QueryPage extends React.Component {
 
   saveQuery = (button) => {
 
+	const item = this.state.item;
+
    var data = {
-	params: {
-		"timestamp": moment(),
-		"updated_at": moment(),
-		"name": "test" + moment(),
-		"query": "{}",
-		"active": true,
-		"scheduled": true
-	}
+	params: item
    };
    var config = {};
 
