@@ -98,7 +98,8 @@ export class QueryPage extends React.Component {
     const { params } = this.props;
 
 	if ( params.name ) {
-		
+		console.log("Get item");
+		this.getQuery("saved-search", "query", params.name);	
 	}
 	
   }
@@ -144,7 +145,7 @@ export class QueryPage extends React.Component {
 	this.setState( { item } );
  };
 
-  getQueries(index, type, id) {
+  getQuery(index, type, id) {
 	
 	var data = { 
 		"index": index,
@@ -153,11 +154,12 @@ export class QueryPage extends React.Component {
    	};
 	
 	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_get", data).then((resp) => {
-		const item = this.state.item;
+		//const item = this.state.item;
+		console.log("Found item");
+		console.log(resp.data.resp._source);
+		//var item = resp.data.resp._source;
 		
-		item = resp.data.resp._source;
-		
-		this.setState({item});
+		this.setState({item: resp.data.resp._source});
 		
 	}).catch((e) => {
 		console.log(e);
@@ -195,8 +197,10 @@ export class QueryPage extends React.Component {
 
 	validateQuery = (button) => {
 
+	const item = this.state.item;
+
 	var data = {
-		"query": this.state.query
+		"query": item.query
 	};
 	
 	var config = {};
@@ -206,7 +210,7 @@ export class QueryPage extends React.Component {
   	console.log("---");
 	console.log(resp); 
 
-	const item = this.state.item
+	//const item = this.state.item
 	item.valid = resp.data.resp.valid;
  
 	this.setState({
@@ -314,7 +318,7 @@ export class QueryPage extends React.Component {
 								label="Name"
 								helpText="I am some friendly help text."
 								>
-								<EuiFieldText fullWidth name="name" onChange={this.handleName} />
+								<EuiFieldText value={item.name} fullWidth name="name" onChange={this.handleName} />
 							</EuiFormRow>
 						</EuiFlexItem>
 						
@@ -357,11 +361,12 @@ export class QueryPage extends React.Component {
 								>
 								<Fragment>
 								<EuiRange
+									fullWidth
 								          id="range"
 								          min={0}
 								          max={10}
 								          step={1}
-								          value={this.state.value}
+								          value={item.severity}
 								          onChange={this.onChange}
 								          aria-label="Use aria labels when no actual label is in use"
 								          aria-describedby="levelsHelp"
@@ -382,7 +387,7 @@ export class QueryPage extends React.Component {
 		        mode="javascript"
 		        theme="github"
 		        width="100%"
-		        value={this.state.query}
+		        value={item.query}
 		        onChange={this.handleQuery}
 		        setOptions={{
 		          fontSize: '14px',
