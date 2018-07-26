@@ -103,7 +103,10 @@ export class QueryPage extends React.Component {
   };
 
   handleQuery = (query) => {
-    this.setState({ JSON.stringify(query) });
+	
+	const formatted = JSON.stringify(query)
+	
+    this.setState({ query: formatted });
     //console.log({value});
   };
 
