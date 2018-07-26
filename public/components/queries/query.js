@@ -52,7 +52,14 @@ export class QueryPage extends React.Component {
 		query: "{}",
 		valid: false,
 		value: '3',
-		item: {}
+		item: {
+			name: "",
+			query: "{}",
+			severity: '3',
+			valid: false,
+			active: false,
+			scheduled: false
+		}
 	};
 
 	this.levels = [
@@ -73,7 +80,10 @@ export class QueryPage extends React.Component {
 	      }
 	    ];
 
+	this.handleName = this.handleName.bind(this);
 	this.handleQuery = this.handleQuery.bind(this);
+	this.handleActive = this.handleActive.bind(this);
+	this.handleScheduled = this.handleScheduled.bind(this);
   }
 
   componentDidMount() {
@@ -85,9 +95,12 @@ export class QueryPage extends React.Component {
     const { params } = this.props;
 
 	const item = {
+		name: "",
 		query: this.state.query,
 		severity: this.state.value,
-		valid: this.state.valid
+		valid: this.state.valid,
+		active: false,
+		scheduled: false
 	}
 
 	this.setState({ item });
@@ -97,35 +110,42 @@ export class QueryPage extends React.Component {
   //ACTIONS
   onChange = e => {
 	console.log(e.target.value);
+	const item = this.state.item;
+	item.severity = e.target.value;
     this.setState({
       value: e.target.value,
     });
+	this.setState({item});
+  };
+
+  handleName = (name) => {
+    const item = this.state.item;
+
+        item.name = name.target.value;
+
+    this.setState({ name, item });
+    console.log({item});
   };
 
   handleQuery = (query) => {
+    const item = this.state.item;
+
+	item.query = query;
 	
-    this.setState({ query });
-    //console.log({value});
+    this.setState({ query, item });
+    console.log({item});
   };
 
   handleActive = (value) => {
-	//pageOfItems
-	//const items = this.state.pageOfItems
-	//items[this.state.pageOfItems.map(item => item._id).indexOf(value.target.name)]._source.active = value.target.checked;
-	//this.setState({items});
-	//this.updateDocument(items[this.state.pageOfItems.map(item => item._id).indexOf(value.target.name)]);
+	const item = this.state.item
+	item.active = value.target.checked;
+	this.setState( { item } );
   };
 
   handleScheduled = (value) => {
-  	//this.test({});
-	//const items = this.state.items
-    //    items[this.state.items.map(item => item._id).indexOf(value.target.name)]._source.scheduled = value.target.checked;
-    //    //const item = items[this.state.items.map(item => item._id).indexOf(value.target.name)];
-	////console.log(item); 
-    //    this.setState({items});
-    //
-	//this.updateDocument(items[this.state.items.map(item => item._id).indexOf(value.target.name)]);
-	//this.test; 
+	const item = this.state.item
+	item.scheduled = value.target.checked;
+	this.setState( { item } );
  };
 
   saveQuery = (button) => {
@@ -172,9 +192,14 @@ export class QueryPage extends React.Component {
     this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_validate", data ).then((resp) => {
 
   	console.log("---");
-	console.log(resp);  
+	console.log(resp); 
+
+	const item = this.state.item
+	item.valid = resp.data.resp.valid;
+ 
 	this.setState({
-		valid: resp.data.resp.valid
+		valid: resp.data.resp.valid,
+		item
 	});
 
 	}).catch((e) => {
@@ -225,8 +250,6 @@ export class QueryPage extends React.Component {
 	
 	const valid = this.state.valid;
 	
-	const active = true;
-	const scheduled = true;
 	
 	const {item} = this.state;
 
@@ -279,7 +302,7 @@ export class QueryPage extends React.Component {
 								label="Name"
 								helpText="I am some friendly help text."
 								>
-								<EuiFieldText fullWidth name="name" />
+								<EuiFieldText fullWidth name="name" onChange={this.handleName} />
 							</EuiFormRow>
 						</EuiFlexItem>
 						
@@ -293,9 +316,9 @@ export class QueryPage extends React.Component {
 										>
 										<EuiSwitch 
 											id="active"
-											name={item._id} 
+											name={"asd"} 
 											onChange={this.handleActive} 
-											checked={active}
+											checked={item.active}
 											/>
 									</EuiFormRow>
 								</EuiFlexItem>
@@ -307,9 +330,9 @@ export class QueryPage extends React.Component {
 								>
 								<EuiSwitch 
 									id="scheduled"
-									name={item._id} 
+									name={"sch"} 
 									onChange={this.handleScheduled} 
-									checked={scheduled}
+									checked={item.scheduled}
 								/>
 							</EuiFormRow>
 						</EuiFlexItem>
@@ -367,7 +390,7 @@ export class QueryPage extends React.Component {
 						fullWidth
 						>
 							<EuiCodeBlock language="json">
-				              { JSON.parse(JSON.stringify(item)) }
+				              { JSON.stringify(item) }
 				            </EuiCodeBlock>
 				</EuiFormRow>
 						</EuiFlexItem>
