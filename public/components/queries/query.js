@@ -103,7 +103,7 @@ export class QueryPage extends React.Component {
   };
 
   handleQuery = (query) => {
-    this.setState({ query });
+    this.setState({ JSON.stringify(query) });
     //console.log({value});
   };
 
@@ -366,7 +366,7 @@ export class QueryPage extends React.Component {
 						fullWidth
 						>
 							<EuiCodeBlock language="json">
-				              {JSON.stringify(query)}
+				              { item }
 				            </EuiCodeBlock>
 				</EuiFormRow>
 						</EuiFlexItem>
