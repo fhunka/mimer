@@ -367,7 +367,7 @@ export class QueryPage extends React.Component {
 						fullWidth
 						>
 							<EuiCodeBlock language="json">
-				              { JSON.parse(item) }
+				              { JSON.parse(JSON.stringify(item)) }
 				            </EuiCodeBlock>
 				</EuiFormRow>
 						</EuiFlexItem>
