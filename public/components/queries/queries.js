@@ -475,8 +475,8 @@ cloneQuery = query => {
     name: 'Name',
     hideForMobile: true,
     'data-test-subj': 'firstNameCell',
-    render: (name) => (
-      <EuiLink href={'#/?a=' + name}>{name}</EuiLink>
+    render: (name, item) => (
+      <EuiLink href={'#/query/' + item._id}>{name}</EuiLink>
     ),
   },
   {

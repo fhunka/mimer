@@ -53,7 +53,8 @@ export class QueryPage extends React.Component {
 		valid: false,
 		value: '3',
 		item: {
-			timestamp: moment(),
+			datetime: moment(),
+			timestamp: moment().valueOf(),
 			updated_at: moment(),
 			name: "",
 			query: "{}",
@@ -310,7 +311,7 @@ export class QueryPage extends React.Component {
 											/>
 									</EuiFormRow>
 								</EuiFlexItem>
-								<EuiFlexItem grow={false}>
+								<EuiFlexItem>
 									<EuiFormRow
 								fullWidth
 								label="Scheduled"
@@ -348,7 +349,8 @@ export class QueryPage extends React.Component {
 						</EuiFlexGrid>
 						</EuiFlexItem>
 					</EuiFlexGroup>
-
+1360013296123
+1331698658276340
 
 				
 				
