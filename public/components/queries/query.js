@@ -53,6 +53,8 @@ export class QueryPage extends React.Component {
 		valid: false,
 		value: '3',
 		item: {
+			timestamp: moment(),
+			updated_at: moment(),
 			name: "",
 			query: "{}",
 			severity: '3',
@@ -94,17 +96,7 @@ export class QueryPage extends React.Component {
     const { httpClient } = this.props;
     const { params } = this.props;
 
-	const item = {
-		name: "",
-		query: this.state.query,
-		severity: this.state.value,
-		valid: this.state.valid,
-		active: false,
-		scheduled: false
-	}
-
-	this.setState({ item });
-
+	
   }
 
   //ACTIONS
@@ -151,6 +143,7 @@ export class QueryPage extends React.Component {
   saveQuery = (button) => {
 
 	const item = this.state.item;
+	item.updated_at = moment();
 
    var data = {
 	params: item
