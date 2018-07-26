@@ -86,7 +86,7 @@ export class QueryPage extends React.Component {
 
 	const item = {
 		query: this.state.query,
-		severity: this.state.value
+		severity: this.state.value,
 		valid: this.state.valid
 	}
 
