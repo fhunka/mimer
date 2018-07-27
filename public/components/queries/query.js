@@ -222,12 +222,12 @@ export class QueryPage extends React.Component {
 
   };
 
-  updateQuery = (button) {
+  updateQuery = (button) => {
 	
 	const item = this.state.item;
-	const item_index: this.state.item_index;
-	const item_type: this.state.item_type;
-	const item_id: this.state.item_id;
+	const item_index = this.state.item_index;
+	const item_type = this.state.item_type;
+	const item_id = this.state.item_id;
 	
 	item.updated_at = moment();
 
@@ -237,7 +237,14 @@ export class QueryPage extends React.Component {
 		"id": item_id,
 		"body": { 
 			"doc": {
-				item
+				"index": "logstash-*",
+                        "updated_at": moment(),
+                        "name": item.name,
+                        "query": item.query,
+                        "severity": item.severity,
+                        "valid": item.valid,
+                        "active": item.active,
+                        "scheduled": item.scheduled
 			}
 		}
 	};
