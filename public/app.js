@@ -120,13 +120,13 @@ app.controller('Queries', function ($scope, $route, $http, $routeParams) {
         //});   
 });
 
-app.controller('Query', function ($scope, $route, $http, $routeParams) {
+app.controller('Query', function ($scope, $route, $http, $routeParams, $window) {
 
         //console.log($routeParams);
         //console.log($element);
         //const domNode = "";
         //render(<Query />, document.getElementById('app2app'));
-        render(<QueryPage title="Create Query" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<QueryPage title="Create Query" httpClient={$http} params={$routeParams} windows={$window} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;

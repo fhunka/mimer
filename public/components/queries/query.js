@@ -96,6 +96,7 @@ export class QueryPage extends React.Component {
     */
     const { httpClient } = this.props;
     const { params } = this.props;
+    const { windows } = this.props;
 
 	if ( params.name ) {
 		console.log("Get item");
@@ -184,6 +185,8 @@ export class QueryPage extends React.Component {
           btnSave: "Save",
           btnSaveLoading: false
         });
+
+	this.props.windows.location.href = '#/queries';
 
 	}).catch((e) => {
 	this.setState({
@@ -291,12 +294,16 @@ export class QueryPage extends React.Component {
         </EuiHeaderLinks>
 
         </EuiHeader>
+
+<EuiSpacer />
+
         <EuiPageHeader>
           <EuiTitle size="l">
             <h1>{title}</h1>
           </EuiTitle>
-	{this.renderBreadcrumbs()}
         </EuiPageHeader>
+
+
         <EuiPageBody>
           <EuiPageContent>
             <EuiPageContentHeader>
@@ -363,7 +370,7 @@ export class QueryPage extends React.Component {
 								<EuiRange
 									fullWidth
 								          id="range"
-								          min={0}
+								          min={1}
 								          max={10}
 								          step={1}
 								          value={item.severity}

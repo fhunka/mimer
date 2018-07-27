@@ -451,7 +451,7 @@ cloneQuery = query => {
 //  ),
 //},
 {   
-    field: '_source.timestamp',
+    field: '_source.datetime',
     name: 'Created at',
     sortable: true,
     hideForMobile: true,
@@ -583,13 +583,16 @@ const getCellProps = (item, column) => {
               </EuiTitle>
             </EuiPageContentHeader>
  
-{this.renderBreadcrumbs()}
 <EuiPageContentBody>
 	{pageOfItems.length ==  0 ? (
 		<div>{this.EmptyIndex()}<Test/></div>
 	) : (
 
 <div>
+  <EuiButton fill iconType={'plusInCircle'} href="#/queries/new">
+          Create a Query
+        </EuiButton>
+	<EuiSpacer />
               <EuiBasicTable
       items={pageOfItems}
       id="id"
