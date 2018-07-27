@@ -56,6 +56,7 @@ export class QueryPage extends React.Component {
 		valid: false,
 		value: '3',
 		item: {
+			index: "logstash-*"
 			datetime: moment(),
 			timestamp: moment().valueOf(),
 			updated_at: moment(),
@@ -86,6 +87,7 @@ export class QueryPage extends React.Component {
 	      }
 	    ];
 
+	this.handleIndex = this.handleIndex.bind(this);
 	this.handleName = this.handleName.bind(this);
 	this.handleQuery = this.handleQuery.bind(this);
 	this.handleActive = this.handleActive.bind(this);
@@ -118,6 +120,15 @@ export class QueryPage extends React.Component {
     });
 	this.setState({item});
   };
+
+	handleIndex = (index) => {
+	    const item = this.state.item;
+
+	        item.index = index.target.value;
+
+	    this.setState({ index, item });
+	    console.log({item});
+	  };
 
   handleName = (name) => {
     const item = this.state.item;
@@ -322,6 +333,15 @@ export class QueryPage extends React.Component {
 				
 
 					<EuiFlexGroup>
+						<EuiFlexItem>
+							<EuiFormRow
+								fullWidth
+								label="Index"
+								helpText="I am some friendly help text."
+								>
+								<EuiFieldText value={item.index} fullWidth name="index" onChange={this.handleIndex} />
+							</EuiFormRow>
+						</EuiFlexItem>
 						<EuiFlexItem>
 							<EuiFormRow
 								fullWidth
