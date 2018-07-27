@@ -144,8 +144,8 @@ onTableChange = ({ page = {}, sort = {} }) => {
 
   handleCheckedScheduled = (value) => {
   	//this.test({});
-	const items = this.state.items
-        items[this.state.items.map(item => item._id).indexOf(value.target.name)]._source.scheduled = value.target.checked;
+	const items = this.state.pageOfItems
+        items[this.state.pageOfItems.map(item => item._id).indexOf(value.target.name)]._source.scheduled = value.target.checked;
         //const item = items[this.state.items.map(item => item._id).indexOf(value.target.name)];
 	//console.log(item); 
         this.setState({items});
@@ -485,13 +485,13 @@ cloneQuery = query => {
     sortable: true,
     dataType: 'boolean',
     render: (active, item) => (
-      <EuiSwitch 
-	id={item._id + "_active"}
-	name={item._id} 
-	onChange={this.handleChecked} 
-	checked={active}
-	/>
-    ),
+      	<EuiSwitch 
+			id={item._id + "_active"}
+			name={item._id} 
+			onChange={this.handleChecked} 
+			checked={active}
+			/>
+    	),
   },
   {
     field: '_source.scheduled',
