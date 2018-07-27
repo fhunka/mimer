@@ -222,12 +222,12 @@ export class QueryPage extends React.Component {
 
   };
 
-  updateQuery = (button) {
+  updateQuery = (button) => {
 	
 	const item = this.state.item;
-	const item_index: this.state.item_index;
-	const item_type: this.state.item_type;
-	const item_id: this.state.item_id;
+	const item_index = this.state.item_index;
+	const item_type = this.state.item_type;
+	const item_id = this.state.item_id;
 	
 	item.updated_at = moment();
 
