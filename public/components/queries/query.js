@@ -56,6 +56,9 @@ export class QueryPage extends React.Component {
 		valid: false,
 		value: '3',
 		item_exists: false,
+		item_index: "",
+		item_type: "",
+		item_id: "",
 		item: {
 			index: "logstash-*",
 			datetime: moment(),
@@ -177,7 +180,10 @@ export class QueryPage extends React.Component {
 		
 		this.setState({
 			item: resp.data.resp._source,
-			item_exists: true
+			item_exists: true,
+			item_index: resp.data.resp._index,
+			item_type: resp.data.resp._type,
+			item_id: resp.data.resp._id
 			});
 		
 	}).catch((e) => {
@@ -216,17 +222,22 @@ export class QueryPage extends React.Component {
 
   };
 
-  updateDocument(item) {
+  updateQuery = (button) {
+	
+	const item = this.state.item;
+	const item_index: this.state.item_index;
+	const item_type: this.state.item_type;
+	const item_id: this.state.item_id;
+	
+	item.updated_at = moment();
 
   	var data = {
-		"index": item._index,
-		"type": item._type,
-		"id": item._id,
+		"index": item_index,
+		"type": item_type,
+		"id": item_id,
 		"body": { 
 			"doc": {
-				"active": item._source.active,
-				"scheduled": item._source.scheduled,
-				"updated_at": moment()
+				item
 			}
 		}
 	};
