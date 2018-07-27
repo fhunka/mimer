@@ -55,8 +55,9 @@ export class QueryPage extends React.Component {
 		query: "{}",
 		valid: false,
 		value: '3',
+		item_exists: false,
 		item: {
-			index: "logstash-*"
+			index: "logstash-*",
 			datetime: moment(),
 			timestamp: moment().valueOf(),
 			updated_at: moment(),
@@ -174,7 +175,10 @@ export class QueryPage extends React.Component {
 		console.log(resp.data.resp._source);
 		//var item = resp.data.resp._source;
 		
-		this.setState({item: resp.data.resp._source});
+		this.setState({
+			item: resp.data.resp._source,
+			item_exists: true
+			});
 		
 	}).catch((e) => {
 		console.log(e);
@@ -212,11 +216,37 @@ export class QueryPage extends React.Component {
 
   };
 
+  updateDocument(item) {
+
+  	var data = {
+		"index": item._index,
+		"type": item._type,
+		"id": item._id,
+		"body": { 
+			"doc": {
+				"active": item._source.active,
+				"scheduled": item._source.scheduled,
+				"updated_at": moment()
+			}
+		}
+	};
+
+	var config = {};
+	
+	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_update", data ).then((resp) => {
+        	console.log("Item updated");
+	}).catch((e) => {
+		console.log(e);
+        });
+
+  };
+
 	validateQuery = (button) => {
 
 	const item = this.state.item;
 
 	var data = {
+		"index": item.index,
 		"query": item.query
 	};
 	
@@ -282,7 +312,7 @@ export class QueryPage extends React.Component {
 	const { query } = this.state;
 	
 	const valid = this.state.valid;
-	
+	const item_exists = this.state.item_exists;
 	
 	const {item} = this.state;
 
@@ -442,13 +472,31 @@ export class QueryPage extends React.Component {
 		  	
 				<EuiFlexGroup>
 					<EuiFlexItem grow={false}>
-					        <EuiButton
-							  fill
-							  isDisabled={!valid}
-								onClick={this.saveQuery}
-					        >
-								Save
-					        </EuiButton>
+					
+						{item_exists ? (
+							<div>
+								<EuiButton
+								  fill
+								  isDisabled={!valid}
+									onClick={this.updateQuery}
+						        >
+									Update
+						        </EuiButton>
+							</div>
+						) : (
+
+					<div>
+					<EuiButton
+					  fill
+					  isDisabled={!valid}
+						onClick={this.saveQuery}
+			        >
+						Save
+			        </EuiButton>
+					</div>
+					)}
+					
+					        
 					      </EuiFlexItem>
 
 					      <EuiFlexItem grow={false}>
