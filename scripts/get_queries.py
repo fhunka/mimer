@@ -7,7 +7,7 @@ from elasticsearch import Elasticsearch
 from elasticsearch import helpers
 #from dateutil.parser import parse as parse_date
 
-es = Elasticsearch(["172.20.10.3"])
+es = Elasticsearch(["localhost"])
 
 def print_search_stats(results):
     print('=' * 80)
@@ -48,7 +48,7 @@ ss_to_json_query={
 #print_hits(result)
 
 # Use scan instead because we can have more then the default 10 hits returned
-result = helpers.scan(es, query=ss_to_json_query,index="saved-search",doc_type="indicator")
+result = helpers.scan(es, query=ss_to_json_query,index="saved-search",doc_type="query")
 #for hits in result:
 #	print(hits)
 
@@ -96,11 +96,13 @@ for hit in result:
 		}
 	}
 		
-	t = es.indices.validate_query(index='events', doc_type='event', body=hit['_source']['query'])
-	if t["valid"]:
+	#t = es.indices.validate_query(index='*', doc_type='', body=hit['_source']['query'])
+	#if t["valid"]:
+	if hit['_source']['valid']:
 		print('Execute all if valid query')
-		ss = es.search(index='events', doc_type='event', body=hit['_source']['query'])
-		print(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), hit["_source"]["name"], json.dumps(t))
+		#ss = es.search(index='logstash-*', doc_type='event', body=hit['_source']['query'])
+		ss = es.search(index='logstash-*', body=hit['_source']['query'])
+		print(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), hit["_source"]["name"], json.dumps(ss))
 		alert["_source"]["result"] = ss
 		#for hit_w in w['hits']['hits']:
 		#	print(json.dumps(hit_w,sort_keys=True,indent=2))
@@ -109,7 +111,7 @@ for hit in result:
 		alert["_source"]["result"] = {}
 		print(hit["_source"]["name"], t)
 		
-	alert["_source"]["validation"] = t
+	#alert["_source"]["validation"] = t
 	#print(json.dumps(alert,sort_keys=True,indent=2))
 	actions.append(alert)
 	actions.append(update)
@@ -134,5 +136,5 @@ notification = {
 }
 
 actions.append(notification)
-#if actions: 	
-#	helpers.bulk(es, actions)
+if actions: 	
+	helpers.bulk(es, actions)
