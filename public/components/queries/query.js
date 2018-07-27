@@ -42,8 +42,11 @@ import {
   EuiForm,
   EuiRange,
   EuiFlexGrid,
-  EuiFormHelpText
+  EuiFormHelpText,
+  EuiSearchBar
 } from "@elastic/eui";
+
+const initialQuery = { "query": {EuiSearchBar.Query.MATCH_ALL} };
 
 export class QueryPage extends React.Component {
   constructor(props) {
@@ -57,7 +60,7 @@ export class QueryPage extends React.Component {
 			timestamp: moment().valueOf(),
 			updated_at: moment(),
 			name: "",
-			query: "{}",
+			query: initialQuery,
 			severity: '3',
 			valid: false,
 			active: false,
@@ -410,8 +413,8 @@ export class QueryPage extends React.Component {
 						<EuiFormRow label="Formatted query" 
 						fullWidth
 						>
-							<EuiCodeBlock language="json">
-				              { JSON.stringify(item) }
+							<EuiCodeBlock language="js">
+				              { JSON.stringify(item, null, 2) }
 				            </EuiCodeBlock>
 				</EuiFormRow>
 						</EuiFlexItem>
