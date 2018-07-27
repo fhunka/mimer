@@ -87,7 +87,7 @@ app.controller('Issues', function ($scope, $route, $http, $routeParams) {
         //console.log($element);
         //const domNode = "";
         //render(<Issue />, document.getElementById('app2app'));
-        render(<Main title="oaoa jag_testar_ett_plugin" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<Main title="Issues" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;
@@ -100,7 +100,7 @@ app.controller('Schedules', function ($scope, $route, $http, $routeParams) {
         //console.log($element);
         //const domNode = "";
         //render(<Issue />, document.getElementById('app2app'));
-        render(<Main title="oaoa jag_testar_ett_plugin" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<Main title="Schedules" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;

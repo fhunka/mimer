@@ -532,6 +532,12 @@ export class QueryPage extends React.Component {
 			</Fragment>
 		</div>
 		
+		<EuiGlobalToastList
+		        toasts={this.state.toasts}
+		        dismissToast={this.removeToast}
+		        toastLifeTimeMs={6000}
+		      />
+		
             </EuiPageContentBody>
           </EuiPageContent>
         </EuiPageBody>
