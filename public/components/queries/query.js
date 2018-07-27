@@ -46,7 +46,7 @@ import {
   EuiSearchBar
 } from "@elastic/eui";
 
-const initialQuery = "{}";
+const initialQuery = "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}";
 
 export class QueryPage extends React.Component {
   constructor(props) {

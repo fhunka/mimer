@@ -188,7 +188,7 @@ export default function (server) {
 		console.log("--- req --")
 		console.log(req.payload);
 		dataCluster.callWithRequest(req,'indices.validateQuery',{
-			index: req.pqyload.index,
+			index: req.payload.index,
 			body: req.payload.query
 		}).then(function (resp) {
 			//console.log(resp);//.aggregations.hosts.buckets);
