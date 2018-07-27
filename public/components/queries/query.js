@@ -46,7 +46,7 @@ import {
   EuiSearchBar
 } from "@elastic/eui";
 
-const initialQuery = { "query": {EuiSearchBar.Query.MATCH_ALL} };
+const initialQuery = "{}";
 
 export class QueryPage extends React.Component {
   constructor(props) {
@@ -414,7 +414,7 @@ export class QueryPage extends React.Component {
 						fullWidth
 						>
 							<EuiCodeBlock language="js">
-				              { JSON.stringify(item, null, 2) }
+				              { JSON.stringify(item, Object.keys(item).sort(), 2) }
 				            </EuiCodeBlock>
 				</EuiFormRow>
 						</EuiFlexItem>
