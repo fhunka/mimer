@@ -43,7 +43,9 @@ import {
   EuiRange,
   EuiFlexGrid,
   EuiFormHelpText,
-  EuiSearchBar
+  EuiSearchBar,
+  EuiToast,
+  EuiGlobalToastList
 } from "@elastic/eui";
 
 const initialQuery = "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}";
@@ -70,7 +72,8 @@ export class QueryPage extends React.Component {
 			valid: false,
 			active: false,
 			scheduled: false
-		}
+		},
+		toasts: []
 	};
 
 	this.levels = [
@@ -114,6 +117,53 @@ export class QueryPage extends React.Component {
 	
   }
 
+  removeToast = (removedToast) => {
+    this.setState(prevState => ({
+      toasts: prevState.toasts.filter(toast => toast.id !== removedToast.id),
+    }));
+  };
+
+  addToast = () => {
+    //const toast = this.getRandomToast();
+
+    const toast = {
+      title: `Check it out, here's a really long title that will wrap within a narrower browser`,
+      text: (
+        <Fragment>
+          <p>
+            Here&rsquo;s some stuff that you need to know. We can make this text really long so that,
+            when viewed within a browser that&rsquo;s fairly narrow, it will wrap, too.
+          </p>
+          <p>
+            And some other stuff on another line, just for kicks. And <EuiLink href="#">here&rsquo;s a link</EuiLink>.
+          </p>
+        </Fragment>
+      ),
+    };
+
+    this.setState({
+      toasts: this.state.toasts.concat(toast),
+    });
+  };
+
+  getRandomToast = () => {
+    const toasts = [{
+      title: `Check it out, here's a really long title that will wrap within a narrower browser`,
+      text: (
+        <Fragment>
+          <p>
+            Here&rsquo;s some stuff that you need to know. We can make this text really long so that,
+            when viewed within a browser that&rsquo;s fairly narrow, it will wrap, too.
+          </p>
+          <p>
+            And some other stuff on another line, just for kicks. And <EuiLink href="#">here&rsquo;s a link</EuiLink>.
+          </p>
+        </Fragment>
+      ),
+    }];
+
+  };
+
   //ACTIONS
   onChange = e => {
 	console.log(e.target.value);
@@ -153,6 +203,7 @@ export class QueryPage extends React.Component {
   };
 
   handleActive = (value) => {
+	this.addToast();
 	const item = this.state.item;
 	item.active = value.target.checked;
 	this.setState( { item } );
@@ -377,6 +428,8 @@ export class QueryPage extends React.Component {
 		
 		<div>
 		    <Fragment>
+
+
 			<EuiForm>
 				
 
@@ -531,7 +584,11 @@ export class QueryPage extends React.Component {
 			</EuiForm>
 			</Fragment>
 		</div>
-		
+		<EuiGlobalToastList
+        toasts={this.state.toasts}
+        dismissToast={this.removeToast}
+        toastLifeTimeMs={6000}
+      />
             </EuiPageContentBody>
           </EuiPageContent>
         </EuiPageBody>
