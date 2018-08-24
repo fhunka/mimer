@@ -185,19 +185,22 @@ export default function (server) {
     path: '/api/jag_testar_ett_plugin/queries_validate',
     method: 'POST',
     handler: function(req, reply) {
-		console.log("--- req --")
+		console.log("--- req --");
 		console.log(req.payload);
+		console.log("----------");
 		dataCluster.callWithRequest(req,'indices.validateQuery',{
 			index: req.payload.index,
 			body: req.payload.query
 		}).then(function (resp) {
 			//console.log(resp);//.aggregations.hosts.buckets);
 			//reply(resp);
+			console.log("<------ validate success ------>")
 			reply({
 				ok: true,
 				resp: resp
 			});
 		}).catch(function (resp) {	
+			console.log("<------ validate error ------>")
 			console.error(resp);
 			//reply({status: resp.status});
 			reply({
