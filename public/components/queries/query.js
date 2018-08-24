@@ -333,12 +333,15 @@ export class QueryPage extends React.Component {
 		valid: resp.data.resp.valid,
 		item
 	});
+	
+		this.addToast();
 
 	}).catch((e) => {
 	//this.setState({
     //    btnSave: "Error",
     //    btnSaveLoading: false
     //});
+		this.addToast();
 		console.log(e);
 	});
 
