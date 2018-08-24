@@ -192,11 +192,11 @@ export default function (server) {
 			body: req.payload.query
 		}).then(function (resp) {
 			//console.log(resp);//.aggregations.hosts.buckets);
-			reply(resp);
-			//reply({
-			//	ok: true,
-			//	resp: resp
-			//});
+			//reply(resp);
+			reply({
+				ok: true,
+				resp: resp
+			});
 		}).catch(function (resp) {	
 			console.error(resp);
 			reply({status: resp.status});
