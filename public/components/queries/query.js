@@ -129,8 +129,8 @@ export class QueryPage extends React.Component {
     //const toast = this.getRandomToast();
 
     const toast = {
-      id: toastId++,
-      toast: obj,
+	  id: toastId++,
+      ...obj,
     };
 
     this.setState({
