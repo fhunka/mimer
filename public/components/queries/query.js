@@ -327,10 +327,12 @@ export class QueryPage extends React.Component {
 			item
 		});
 		
-		this.addToast({ "title": "success", "text": "Valid query" });
+		if( item.valid == false)
+			this.addToast({ "title": "Not Valid", "text": "Invalid query", "color": "warning", "iconType": "alert" });
+		}
 		
 	} else {
-		this.addToast({"title": "Error", "text": resp.data.resp.msg });
+		this.addToast({"title": "Error", "text": resp.data.resp.msg, "color": "danger", "iconType": "alert" });
 	}
 
 	}).catch((e) => {
@@ -338,7 +340,7 @@ export class QueryPage extends React.Component {
     //    btnSave: "Error",
     //    btnSaveLoading: false
     //});
-		this.addToast({"title": "error", "text": "Error" });
+		this.addToast({"title": "error", "text": "Error", "color": "danger", "iconType": "alert" });
 		console.log(e);
 	});
 
