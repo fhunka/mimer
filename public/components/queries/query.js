@@ -326,7 +326,7 @@ export class QueryPage extends React.Component {
 		item
 	});
 	
-		this.addToast({ "title": "success", "text": "Valid query"});
+		this.addToast({ "title": "success", "text": "Valid query" });
 
 	}).catch((e) => {
 	//this.setState({
