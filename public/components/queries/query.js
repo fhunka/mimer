@@ -317,16 +317,21 @@ export class QueryPage extends React.Component {
 
   	console.log("---");
 	console.log(resp); 
-
-	//const item = this.state.item
-	item.valid = resp.data.resp.valid;
- 
-	this.setState({
-		valid: resp.data.resp.valid,
-		item
-	});
 	
+	if(resp.data.ok == true){
+		//const item = this.state.item
+		item.valid = resp.data.resp.valid;
+
+		this.setState({
+			valid: resp.data.resp.valid,
+			item
+		});
+		
 		this.addToast({ "title": "success", "text": "Valid query" });
+		
+	} else {
+		this.addToast({"title": "Error", "text": resp.data.resp.msg });
+	}
 
 	}).catch((e) => {
 	//this.setState({
