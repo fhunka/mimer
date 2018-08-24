@@ -123,10 +123,10 @@ export class QueryPage extends React.Component {
     }));
   };
 
-  addToast = () => {
+  addToast = (toast) => {
     //const toast = this.getRandomToast();
 
-    const toast = {
+    const toasts = {
       title: `Check it out, here's a really long title that will wrap within a narrower browser`,
       text: (
         <Fragment>
@@ -203,7 +203,7 @@ export class QueryPage extends React.Component {
   };
 
   handleActive = (value) => {
-	this.addToast();
+
 	const item = this.state.item;
 	item.active = value.target.checked;
 	this.setState( { item } );
@@ -334,14 +334,14 @@ export class QueryPage extends React.Component {
 		item
 	});
 	
-		this.addToast();
+		this.addToast({ "msg": "success"});
 
 	}).catch((e) => {
 	//this.setState({
     //    btnSave: "Error",
     //    btnSaveLoading: false
     //});
-		this.addToast();
+		this.addToast({"e": e});
 		console.log(e);
 	});
 
