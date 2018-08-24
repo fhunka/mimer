@@ -333,7 +333,7 @@ export class QueryPage extends React.Component {
     //    btnSave: "Error",
     //    btnSaveLoading: false
     //});
-		this.addToast({"title": "error", "text": e });
+		this.addToast({"title": "error", "text": "Error" });
 		console.log(e);
 	});
 
