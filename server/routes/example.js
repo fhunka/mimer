@@ -198,7 +198,8 @@ export default function (server) {
 			//	resp: resp
 			//});
 		}).catch(function (resp) {	
-			console.error("Error while deleting document",resp);
+			console.error(resp);
+			reply(resp);
 			//reply({
 			//	ok: false,
 			//	resp: resp
