@@ -50,6 +50,8 @@ import {
 
 const initialQuery = "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}";
 
+let toastId = 0;
+
 export class QueryPage extends React.Component {
   constructor(props) {
     super(props);
