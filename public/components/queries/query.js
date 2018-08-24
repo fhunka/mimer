@@ -334,14 +334,14 @@ export class QueryPage extends React.Component {
 		item
 	});
 	
-		this.addToast({ "msg": "success"});
+		this.addToast({ "title": "success", "text": "Valid query"});
 
 	}).catch((e) => {
 	//this.setState({
     //    btnSave: "Error",
     //    btnSaveLoading: false
     //});
-		this.addToast({"e": e});
+		this.addToast({"title": "error", "text": e });
 		console.log(e);
 	});
 
