@@ -199,11 +199,11 @@ export default function (server) {
 			});
 		}).catch(function (resp) {	
 			console.error(resp);
-			reply({status: resp.status});
-			//reply({
-			//	ok: false,
-			//	resp: resp
-			//});
+			//reply({status: resp.status});
+			reply({
+				ok: false,
+				resp: resp
+			});
 		});	
 	}
   });
