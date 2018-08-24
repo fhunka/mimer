@@ -199,10 +199,10 @@ export default function (server) {
 			//});
 		}).catch(function (resp) {	
 			console.error("Error while deleting document",resp);
-			reply({
-				ok: false,
-				resp: resp
-			});
+			//reply({
+			//	ok: false,
+			//	resp: resp
+			//});
 		});	
 	}
   });
