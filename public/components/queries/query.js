@@ -318,7 +318,7 @@ export class QueryPage extends React.Component {
   	console.log("---");
 	console.log(resp); 
 	
-	if(resp.data.ok == true){
+	if(resp.data.ok == true) {
 		//const item = this.state.item
 		item.valid = resp.data.resp.valid;
 
@@ -327,7 +327,7 @@ export class QueryPage extends React.Component {
 			item
 		});
 		
-		if( item.valid == false)
+		if( item.valid == false) {
 			this.addToast({ "title": "Not Valid", "text": "Invalid query", "color": "warning", "iconType": "alert" });
 		}
 		
