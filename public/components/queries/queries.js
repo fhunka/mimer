@@ -77,26 +77,11 @@ export class QueryList extends React.Component {
        FOR EXAMPLE PURPOSES ONLY.  There are much better ways to
        manage state and update your UI than this.
     */
-    //const { handle } = this.props.match.params;
     const { httpClient } = this.props;
     const { params } = this.props;
-    //const { store } = this.props;
-    //console.log(params);
-	this.getQueries(this.state.pageIndex, this.state.pageSize, this.state.sortField, this.state.sortDirection);
-    //httpClient.get("../api/jag_testar_ett_plugin/queries").then((resp) => {
-      //this.setState({ time: resp.data.time });
-      //this.setState([ rra: resp.data.resp.hits.hits ]);
-	//TODO: Add exception to empty list
-    //	if ( resp.data.statusCode == 404 ){
-//		this.state.items = [{}];
-//	} else {
-//		this.state.items = resp.data.resp.hits.hits;
-  //    	}
-	
-	//this.setStastore = resp;
 
-    //  this.setState({rr: resp.data.resp.hits.total })
-   // });  
+	this.getQueries(this.state.pageIndex, this.state.pageSize, this.state.sortField, this.state.sortDirection);
+    
   }
 
 

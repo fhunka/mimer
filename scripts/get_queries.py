@@ -48,7 +48,7 @@ ss_to_json_query={
 #print_hits(result)
 
 # Use scan instead because we can have more then the default 10 hits returned
-result = helpers.scan(es, query=ss_to_json_query,index="saved-search",doc_type="query")
+result = helpers.scan(es, query=ss_to_json_query,index="queries",doc_type="doc")
 #for hits in result:
 #	print(hits)
 

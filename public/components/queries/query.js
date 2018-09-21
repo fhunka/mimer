@@ -114,7 +114,7 @@ export class QueryPage extends React.Component {
 
 	if ( params.name ) {
 		console.log("Get item");
-		this.getQuery("saved-search", "query", params.name);	
+		this.getQuery("queries", "doc", params.name);	
 	}
 	
   }

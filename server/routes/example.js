@@ -132,7 +132,7 @@ export default function (server) {
 		tmp[req.payload.params.field] = { "order": req.payload.params.direction }
 
                 dataCluster.callWithRequest(req,'search',{
-                        index: "saved-search",
+                        index: req.payload.settings._index,
 			body: {
                         	size: req.payload.params.size,
                         	from: req.payload.params.from * req.payload.params.size,
