@@ -101,7 +101,7 @@ for hit in result:
 		print('Execute all if valid query')
 		#ss = es.search(index='logstash-*', doc_type='event', body=hit['_source']['query'])
 		ss = es.search(index='logstash-*', body=hit['_source']['query'])
-		print(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), hit["_source"]["name"],"|", json.dumps(ss["hits"]["hits"]["total"]))
+		print(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), hit["_source"]["name"])
 		alert["_source"]["result"] = ss
 		#for hit_w in w['hits']['hits']:
 		#	print(json.dumps(hit_w,sort_keys=True,indent=2))
