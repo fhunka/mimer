@@ -394,7 +394,7 @@ cloneQuery = query => {
         <p>You&rsquo;ll need spice to rule Arrakis, young Atreides.</p>
       </Fragment>
     }
-    //actions={<Test httpClient={this.props.httpClient}/>}
+
     actions={<EuiButton fill href="#/queries/new">
           Create a Query
         </EuiButton>}
@@ -578,29 +578,6 @@ const getCellProps = (item, column) => {
             </EuiPageContentHeader>
  
 <EuiPageContentBody>
-	{pageOfItems.length ==  0 ? (
-		<div>{this.EmptyIndex()}<Test/></div>
-	) : (
-
-<div>
-  <EuiButton fill iconType={'plusInCircle'} href="#/queries/new">
-          Create a Query
-        </EuiButton>
-	<EuiSpacer />
-              <EuiBasicTable
-      items={pageOfItems}
-      id="id"
-      columns={columns}
-      sorting={sorting}
-      pagination={pagination}
-      rowProps={getRowProps}
-      cellProps={getCellProps}
-      hasActions={true}
-      onChange={this.onTableChange}
-      //onPageChange={console.log("test")}
-    />
-</div>
-)}
             </EuiPageContentBody>
           </EuiPageContent>
         </EuiPageBody>
