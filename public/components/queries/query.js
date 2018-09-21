@@ -218,7 +218,7 @@ export class QueryPage extends React.Component {
 		"id": id
    	};
 	
-	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_get", data).then((resp) => {
+	this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_get", data).then((resp) => {
 		//const item = this.state.item;
 		console.log("Found item");
 		console.log(resp.data.resp._source);
@@ -297,7 +297,7 @@ export class QueryPage extends React.Component {
 
 	var config = {};
 	
-	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_update", data ).then((resp) => {
+	this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_update", data ).then((resp) => {
         	console.log("Item updated");
 	}).catch((e) => {
 		console.log(e);

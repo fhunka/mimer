@@ -227,7 +227,7 @@ onTableChange = ({ page = {}, sort = {} }) => {
 
 	var config = {};
 
-	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_update", data ).then((resp) => {
+	this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_update", data ).then((resp) => {
         	console.log("Item updated");
 	}).catch((e) => {
 		console.log(e);
@@ -273,7 +273,7 @@ onTableChange = ({ page = {}, sort = {} }) => {
 
 	//console.log(data);
 
-	this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_list", data).then((resp) => {
+	this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_list", data).then((resp) => {
       //this.setState({ time: resp.data.time });
       //this.setState([ rra: resp.data.resp.hits.hits ]);
         console.log("resp");
@@ -341,7 +341,7 @@ cloneQuery = query => {
         
         var config = {};
         
-        this.props.httpClient.post("../api/jag_testar_ett_plugin/queries_delete_doc", data ).then((resp) => {
+        this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_delete", data ).then((resp) => {
                 console.log("Item updated");
 		console.log(this.state.pageOfItems.map(item => item._id).indexOf(item._id));
 	        items.splice(this.state.pageOfItems.map(item => item._id).indexOf(item._id),1);
