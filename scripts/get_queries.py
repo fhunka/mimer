@@ -59,7 +59,6 @@ print('Iterate all saved searches')
 print('-' * 80)
 
 result_count = 0
-
 for hit in result:
 	
 	#print(json.dumps(hit_w,sort_keys=True,indent=2))
