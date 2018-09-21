@@ -55,7 +55,7 @@ result = helpers.scan(es, query=ss_to_json_query,index="saved-search",doc_type="
 actions = []
 updates = []
 
-print('Iterate all saved searches')
+print('Iterate all found ACTIVE saved searches')
 print('-' * 80)
 
 result_count = 0

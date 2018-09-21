@@ -133,6 +133,9 @@ export class QueryPage extends React.Component {
       ...obj,
     };
 
+	console.log(this.state.toasts.concat(toast));
+	console.log(toast);
+
     this.setState({
       toasts: this.state.toasts.concat(toast),
     });
