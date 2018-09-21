@@ -6,13 +6,18 @@ import { render, unmountComponentAtNode } from 'react-dom';
 
 import 'ui/autoload/styles';
 import './less/main.less';
+
 import { Main } from './components/main';
+
 import { QueryList, QueryPage } from './components/queries';
-//import { QueryPage } from './components/queries';
+import { UsecaseList, UsecasePage } from './components/queries';
 
 import template from './components/index.html';
+
 import issues_index_template from './components/issues/index.html';
+
 import schedules_index_template from './components/schedules/index.html';
+
 import queries_index_template from './components/queries/index.html';
 import queries_show_template from './components/queries/query.html';
 
@@ -148,6 +153,7 @@ app.controller('Usecases', function ($scope, $route, $http, $routeParams) {
         //console.log($element);
         //const domNode = "";
         //render(<Query />, document.getElementById('app2app'));
+		console.log("/usecases")
         render(<UsecaseList title="Usecases" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
