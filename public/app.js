@@ -17,7 +17,7 @@ import queries_index_template from './components/queries/index.html';
 import queries_show_template from './components/queries/query.html';
 
 import usecases_index_template from './components/usecases/index.html';
-import usecasess_show_template from './components/usecases/query.html';
+import usecasess_show_template from './components/usecases/usecase.html';
 
 const app = uiModules.get("apps/jagTestarEttPlugin");
 
@@ -136,6 +136,32 @@ app.controller('Query', function ($scope, $route, $http, $routeParams, $window) 
         //const domNode = "";
         //render(<Query />, document.getElementById('app2app'));
         render(<QueryPage title="Create Query" httpClient={$http} params={$routeParams} windows={$window} />, document.getElementById('app2app'));
+        //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
+                // $scope is local to controller, use global if sharing between controllers
+        //       $scope.result = response.data.resp;
+        //});   
+});
+
+app.controller('Usecases', function ($scope, $route, $http, $routeParams) {
+
+        //console.log($routeParams);
+        //console.log($element);
+        //const domNode = "";
+        //render(<Query />, document.getElementById('app2app'));
+        render(<QueryList title="Usecases" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
+                // $scope is local to controller, use global if sharing between controllers
+        //       $scope.result = response.data.resp;
+        //});   
+});
+
+app.controller('Usecase', function ($scope, $route, $http, $routeParams, $window) {
+
+        //console.log($routeParams);
+        //console.log($element);
+        //const domNode = "";
+        //render(<Query />, document.getElementById('app2app'));
+        render(<QueryPage title="Create Usecase" httpClient={$http} params={$routeParams} windows={$window} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;
