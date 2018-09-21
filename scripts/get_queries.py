@@ -66,7 +66,7 @@ for hit in result:
 	alert = {
 		"_op_type": "index",
 		"_index": "alerts-" + datetime.datetime.utcnow().strftime('%Y.%m.%d'),
-		"_type": "notification",
+		"_type": "doc",
 		"_source": {
 			"type": "alert",
 			"timestamp": datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
@@ -101,7 +101,7 @@ for hit in result:
 		print('Execute all if valid query')
 		#ss = es.search(index='logstash-*', doc_type='event', body=hit['_source']['query'])
 		ss = es.search(index='logstash-*', body=hit['_source']['query'])
-		print(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), hit["_source"]["name"], json.dumps(ss))
+		print(datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'), hit["_source"]["name"],"|", json.dumps(ss["hits"]["hits"]["total"]))
 		alert["_source"]["result"] = ss
 		#for hit_w in w['hits']['hits']:
 		#	print(json.dumps(hit_w,sort_keys=True,indent=2))
@@ -120,7 +120,7 @@ for hit in result:
 notification = {
 		"_op_type": "index",
 		"_index": "alerts-" + datetime.datetime.utcnow().strftime('%Y.%m.%d'),
-		"_type": "notification",
+		"_type": "doc",
 		"_source": {
 			"timestamp": datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
 			"name": "Run Saved Searches",

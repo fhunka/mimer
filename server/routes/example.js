@@ -57,7 +57,7 @@ export default function (server) {
   });
 
   server.route({
-    path: '/api/jag_testar_ett_plugin/queries2',
+    path: '/api/jag_testar_ett_plugin/doc_index',
     method: 'POST',
     //handler(req, reply) {
     //  reply({ time: (new Date()).toISOString() });
@@ -66,8 +66,8 @@ export default function (server) {
 		console.log("--- req ---");
 		console.log(req.payload);
                 dataCluster.callWithRequest(req,'index',{
-                        index: "saved-search",
-			type: "query",
+                        index: req.payload.settings._index,
+			type: req.payload.settings._type,
 			body: req.payload.params
                 }).then(function (resp) {
                         //console.log(resp);//.aggregations.hosts.buckets);

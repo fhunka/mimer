@@ -177,7 +177,11 @@ export class Test extends React.Component {
    // });
    //};
    
-   var data = { 
+   var data = {
+	 	settings: {
+			"_index": "queries",
+			"_type": "doc"
+		},
         params: {
                 "timestamp": moment(),
                 "updated_at": moment(),
@@ -189,7 +193,7 @@ export class Test extends React.Component {
    };
    var config = {};
     
-    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries2", data ).then((resp) => {
+    this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_index", data ).then((resp) => {
       //this.setState({ time: resp.data.time });
       //this.setState([ rra: resp.data.resp.hits.hits ]);
       //  this.items = resp.data.resp.hits.hits;

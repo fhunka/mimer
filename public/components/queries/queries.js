@@ -171,6 +171,10 @@ onTableChange = ({ page = {}, sort = {} }) => {
    //};
 
    var data = {
+	settings: {
+		"_index": "queries",
+		"_type": "doc"
+	},
 	params: {
 		"timestamp": moment(),
 		"updated_at": moment(),
@@ -182,7 +186,7 @@ onTableChange = ({ page = {}, sort = {} }) => {
    };
    var config = {};
 
-    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries2", data ).then((resp) => {
+    this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_index", data ).then((resp) => {
       //this.setState({ time: resp.data.time });
       //this.setState([ rra: resp.data.resp.hits.hits ]);
       //  this.items = resp.data.resp.hits.hits;
@@ -561,6 +565,10 @@ const getCellProps = (item, column) => {
 
           <EuiHeaderLink href="#/schedules">
             Schedules
+          </EuiHeaderLink>
+
+		<EuiHeaderLink href="#/triggers">
+            Triggers
           </EuiHeaderLink>
 
           <EuiHeaderLink iconType="help" href="#/queries" isActive>

@@ -243,11 +243,15 @@ export class QueryPage extends React.Component {
 	item.updated_at = moment();
 
    var data = {
+	settings: {
+		"_index": "queries",
+		"_type": "doc"
+	},
 	params: item
    };
    var config = {};
 
-    this.props.httpClient.post("../api/jag_testar_ett_plugin/queries2", data ).then((resp) => {
+    this.props.httpClient.post("../api/jag_testar_ett_plugin/doc_index", data ).then((resp) => {
       
   	console.log("---");
 	console.log(resp);  
