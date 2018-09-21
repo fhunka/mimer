@@ -253,6 +253,9 @@ onTableChange = ({ page = {}, sort = {} }) => {
 	test.push(tmp);
 
 	var data = { 
+			settings: {
+				"_index": "queries",
+			},
         	params: {
                 	"from": pageIndex,
                 	"size": pageSize,
