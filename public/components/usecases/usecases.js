@@ -539,48 +539,7 @@ const getCellProps = (item, column) => {
 
     return (
       <EuiPage>
-        <EuiHeader>
-            <EuiHeaderSectionItem border="right">
-              {this.renderLogo()}
-            </EuiHeaderSectionItem>
-
-	<EuiHeaderLinks>
-          <EuiHeaderLink href="#/issues">
-            Issues
-          </EuiHeaderLink>
-
-          <EuiHeaderLink href="#/schedules">
-            Schedules
-          </EuiHeaderLink>
-
-		<EuiHeaderLink href="#/usecases">
-            Triggers
-          </EuiHeaderLink>
-
-          <EuiHeaderLink iconType="help" href="#/queries" isActive>
-            Queries
-          </EuiHeaderLink>
-        </EuiHeaderLinks>
-
-        </EuiHeader>
-        <EuiPageHeader>
-          <EuiTitle size="l">
-            <h1>{title}</h1>
-          </EuiTitle>
-	{this.renderBreadcrumbs()}
-        </EuiPageHeader>
-        <EuiPageBody>
-          <EuiPageContent>
-            <EuiPageContentHeader>
-              <EuiTitle>
-                <h1>Queries</h1>
-              </EuiTitle>
-            </EuiPageContentHeader>
- 
-<EuiPageContentBody>
-            </EuiPageContentBody>
-          </EuiPageContent>
-        </EuiPageBody>
+        
       </EuiPage>
 
 
