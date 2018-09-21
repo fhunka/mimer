@@ -10,7 +10,7 @@ import './less/main.less';
 import { Main } from './components/main';
 
 import { QueryList, QueryPage } from './components/queries';
-import { UsecaseList, UsecasePage } from './components/queries';
+import { UsecaseList, UsecasePage } from './components/usecases';
 
 import template from './components/index.html';
 

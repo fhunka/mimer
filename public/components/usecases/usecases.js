@@ -539,7 +539,71 @@ const getCellProps = (item, column) => {
 
     return (
       <EuiPage>
-        
+        <EuiHeader>
+            <EuiHeaderSectionItem border="right">
+              {this.renderLogo()}
+            </EuiHeaderSectionItem>
+
+	<EuiHeaderLinks>
+          <EuiHeaderLink href="#/issues">
+            Issues
+          </EuiHeaderLink>
+
+          <EuiHeaderLink href="#/schedules">
+            Schedules
+          </EuiHeaderLink>
+
+		<EuiHeaderLink href="#/usecases">
+            Triggers
+          </EuiHeaderLink>
+
+          <EuiHeaderLink iconType="help" href="#/queries" isActive>
+            Queries
+          </EuiHeaderLink>
+        </EuiHeaderLinks>
+
+        </EuiHeader>
+        <EuiPageHeader>
+          <EuiTitle size="l">
+            <h1>{title}</h1>
+          </EuiTitle>
+	{this.renderBreadcrumbs()}
+        </EuiPageHeader>
+        <EuiPageBody>
+          <EuiPageContent>
+            <EuiPageContentHeader>
+              <EuiTitle>
+                <h1>Queries</h1>
+              </EuiTitle>
+            </EuiPageContentHeader>
+ 
+<EuiPageContentBody>
+	{pageOfItems.length ==  0 ? (
+		<div>{this.EmptyIndex()}</div>
+	) : (
+
+<div>
+  <EuiButton fill iconType={'plusInCircle'} href="#/queries/new">
+          Create a Query
+        </EuiButton>
+	<EuiSpacer />
+              <EuiBasicTable
+      items={pageOfItems}
+      id="id"
+      columns={columns}
+      sorting={sorting}
+      pagination={pagination}
+      rowProps={getRowProps}
+      cellProps={getCellProps}
+      hasActions={true}
+      onChange={this.onTableChange}
+      //onPageChange={console.log("test")}
+    />
+</div>
+)}
+            </EuiPageContentBody>
+          </EuiPageContent>
+        </EuiPageBody>
       </EuiPage>
 
 
