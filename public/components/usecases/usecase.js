@@ -10,7 +10,7 @@ import {
   EuiFormRow,
 } from '@elastic/eui';
 
-export class Issue extends React.Component {
+export class UsecasePage extends React.Component {
 
   constructor(props) {
     super(props);
