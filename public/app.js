@@ -16,6 +16,9 @@ import schedules_index_template from './components/schedules/index.html';
 import queries_index_template from './components/queries/index.html';
 import queries_show_template from './components/queries/query.html';
 
+import usecases_index_template from './components/usecases/index.html';
+import usecasess_show_template from './components/usecases/query.html';
+
 const app = uiModules.get("apps/jagTestarEttPlugin");
 
 app.config($locationProvider => {
@@ -39,6 +42,12 @@ uiRoutes.when('/', {
 .when('/schedules', {
         template: schedules_index_template,
         controller: 'Schedules',
+        resolve: {},
+        reloadOnSearch: false
+})
+.when('/usecases', {
+        template: usecases_index_template,
+        controller: 'Usecases',
         resolve: {},
         reloadOnSearch: false
 })

@@ -555,7 +555,7 @@ const getCellProps = (item, column) => {
             Schedules
           </EuiHeaderLink>
 
-		<EuiHeaderLink href="#/triggers">
+		<EuiHeaderLink href="#/usecases">
             Triggers
           </EuiHeaderLink>
 
