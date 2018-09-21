@@ -384,7 +384,7 @@ cloneQuery = query => {
     return (
 	<EuiEmptyPrompt
     iconType="editorStrike"
-    title={<h2>You have no queries</h2>}
+    title={<h2>You have no usecases</h2>}
     body={
       <Fragment>
         <p>
@@ -395,8 +395,8 @@ cloneQuery = query => {
       </Fragment>
     }
 
-    actions={<EuiButton fill href="#/queries/new">
-          Create a Query
+    actions={<EuiButton fill href="#/usecases/new">
+          Create a usecase
         </EuiButton>}
   />
     );
@@ -583,8 +583,8 @@ const getCellProps = (item, column) => {
 	) : (
 
 <div>
-  <EuiButton fill iconType={'plusInCircle'} href="#/queries/new">
-          Create a Query
+  <EuiButton fill iconType={'plusInCircle'} href="#/usecases/new">
+          Create a Usecase
         </EuiButton>
 	<EuiSpacer />
               <EuiBasicTable

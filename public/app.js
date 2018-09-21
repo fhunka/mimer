@@ -56,6 +56,12 @@ uiRoutes.when('/', {
         resolve: {},
         reloadOnSearch: false
 })
+.when('/usecases/new', {
+        template: queries_show_template,
+        controller: 'Usecase',
+        resolve: {},
+        reloadOnSearch: false
+})
 .when('/queries', {
         template: queries_index_template,
         controller: 'Queries',
@@ -148,30 +154,11 @@ app.controller('Query', function ($scope, $route, $http, $routeParams, $window) 
 });
 
 app.controller('Usecases', function ($scope, $route, $http, $routeParams) {
-
-        //console.log($routeParams);
-        //console.log($element);
-        //const domNode = "";
-        //render(<Query />, document.getElementById('app2app'));
-		console.log("/usecases")
-        render(<UsecaseList title="Usecases" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
-        //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
-                // $scope is local to controller, use global if sharing between controllers
-        //       $scope.result = response.data.resp;
-        //});   
+	render(<UsecaseList title="Usecases" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
 });
 
 app.controller('Usecase', function ($scope, $route, $http, $routeParams, $window) {
-
-        //console.log($routeParams);
-        //console.log($element);
-        //const domNode = "";
-        //render(<Query />, document.getElementById('app2app'));
-        render(<UsecasePage title="Create Usecase" httpClient={$http} params={$routeParams} windows={$window} />, document.getElementById('app2app'));
-        //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
-                // $scope is local to controller, use global if sharing between controllers
-        //       $scope.result = response.data.resp;
-        //});   
+	render(<UsecasePage title="Create Usecase" httpClient={$http} params={$routeParams} windows={$window} />, document.getElementById('app2app'));
 });
 //function RootController($scope, $element, $http, $routeParams ) {
 //  const domNode = $element[0];
