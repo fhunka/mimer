@@ -1,4 +1,6 @@
 import exampleRoute from './server/routes/example';
+import verifyIndice from './server/routes/verify';
+import interval from './server/routes/interval';
 
 export default function (kibana) {
   return new kibana.Plugin({
@@ -31,7 +33,9 @@ export default function (kibana) {
     
     init(server, options) {
       // Add server routes and initialize the plugin here
+      verifyIndice(server);
       exampleRoute(server);
+      interval(server);
     }
     
 

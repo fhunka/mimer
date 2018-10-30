@@ -16,6 +16,9 @@
     "test:browser": "plugin-helpers test:browser",
     "build": "plugin-helpers build"
   },
+  "dependencies": {
+    "datamaps": "0.5.9"
+  },
   "devDependencies": {
     "@elastic/eslint-config-kibana": "link:../../kibana/packages/eslint-config-kibana",
     "@elastic/eslint-import-resolver-kibana": "^0.9.0",

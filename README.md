@@ -1,3 +1,4 @@
+# Asset management
 README
 https://www.freeformatter.com/json-escape.html
 
@@ -12,6 +13,8 @@ yarn start
 
 kibana-extra/mimer
 git pull
+
+nvm use node 8.4.11
 
 --- Purpose ---
 Save a query
@@ -81,3 +84,43 @@ Get all usecases
 Create Issue
 	Based on timeframe, create a insight based on trigger
 	
+# Create stats from query to form a trendline based on category, beat, logstash, topic
+beats {
+  hostname
+  category
+  
+  kafka(topic) {
+
+    logstash{
+      topic
+      beat.hostname
+      category
+      logstash.hostname
+      
+      elasticsearch {
+        doc {
+          @timestamp
+          hostname - fqdn?
+          message
+          
+          ip {
+            internal {
+              translate {
+                ()()()()
+              }
+            }
+            external {
+              dns_resolv {}
+            }
+          }
+          
+        }
+      }
+      
+    }
+
+  }
+
+}
+
+//Get docs per category, topic, hostname, beat.hostname

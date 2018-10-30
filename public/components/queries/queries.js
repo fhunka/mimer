@@ -2,6 +2,8 @@ import React, {Fragment} from "react";
 
 import moment from 'moment';
 
+import Datamaps from 'datamaps';
+
 import 'brace/theme/github';
 import 'brace/mode/javascript';
 import 'brace/snippets/javascript';
@@ -79,6 +81,13 @@ export class QueryList extends React.Component {
     */
     const { httpClient } = this.props;
     const { params } = this.props;
+    let map = this.map;
+
+    		
+    			map = this.map = new Datamaps({
+    				element: this.refs.container
+    			});
+    //const map = new Datamap({element: document.getElementById('test')});
 
 	this.getQueries(this.state.pageIndex, this.state.pageSize, this.state.sortField, this.state.sortDirection);
     
@@ -541,37 +550,40 @@ const getCellProps = (item, column) => {
 
     return (
       <EuiPage>
-        <EuiHeader>
-            <EuiHeaderSectionItem border="right">
-              {this.renderLogo()}
-            </EuiHeaderSectionItem>
 
-	<EuiHeaderLinks>
-          <EuiHeaderLink href="#/issues">
-            Issues
-          </EuiHeaderLink>
-
-          <EuiHeaderLink href="#/schedules">
-            Schedules
-          </EuiHeaderLink>
-
-		<EuiHeaderLink href="#/usecases">
-            Triggers
-          </EuiHeaderLink>
-
-          <EuiHeaderLink iconType="help" href="#/queries" isActive>
-            Queries
-          </EuiHeaderLink>
-        </EuiHeaderLinks>
-
-        </EuiHeader>
-        <EuiPageHeader>
-          <EuiTitle size="l">
-            <h1>{title}</h1>
-          </EuiTitle>
-	{this.renderBreadcrumbs()}
-        </EuiPageHeader>
         <EuiPageBody>
+			
+      <EuiHeader>
+          <EuiHeaderSectionItem border="right">
+            {this.renderLogo()}
+          </EuiHeaderSectionItem>
+
+<EuiHeaderLinks>
+        <EuiHeaderLink href="#/issues">
+          Issues
+        </EuiHeaderLink>
+
+        <EuiHeaderLink href="#/schedules">
+          Schedules
+        </EuiHeaderLink>
+
+	<EuiHeaderLink href="#/usecases">
+          Triggers
+        </EuiHeaderLink>
+
+        <EuiHeaderLink iconType="help" href="#/queries" isActive>
+          Queries
+        </EuiHeaderLink>
+      </EuiHeaderLinks>
+
+      </EuiHeader>
+      <EuiPageHeader>
+        <EuiTitle size="l">
+          <h1>{title}</h1>
+        </EuiTitle>
+{this.renderBreadcrumbs()}
+      </EuiPageHeader>
+			
           <EuiPageContent>
             <EuiPageContentHeader>
               <EuiTitle>
@@ -603,11 +615,13 @@ const getCellProps = (item, column) => {
     />
 </div>
 )}
+
+  <div ref="container" id="test">asd</div>
+
             </EuiPageContentBody>
           </EuiPageContent>
         </EuiPageBody>
       </EuiPage>
-
 
     );
   }

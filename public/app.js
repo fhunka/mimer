@@ -8,6 +8,7 @@ import 'ui/autoload/styles';
 import './less/main.less';
 
 import { Main } from './components/main';
+import { Setting } from './components/settings';
 
 import { QueryList, QueryPage } from './components/queries';
 import { UsecaseList, UsecasePage } from './components/usecases';
@@ -15,6 +16,8 @@ import { UsecaseList, UsecasePage } from './components/usecases';
 import template from './components/index.html';
 
 import issues_index_template from './components/issues/index.html';
+
+import settings_index_template from './components/settings/index.html';
 
 import schedules_index_template from './components/schedules/index.html';
 
@@ -44,6 +47,12 @@ uiRoutes.when('/', {
 	resolve: {},
 	reloadOnSearch: false
 })
+.when('/settings', {
+        template: settings_index_template,
+        controller: 'Settings',
+        resolve: {},
+        reloadOnSearch: false
+})
 .when('/schedules', {
         template: schedules_index_template,
         controller: 'Schedules',
@@ -66,7 +75,7 @@ uiRoutes.when('/', {
         template: queries_index_template,
         controller: 'Queries',
         resolve: {},
-        reloadOnSearch: false
+        reloadOnSearch: true
 })
 .when('/queries/new', {
         template: queries_show_template,
@@ -114,13 +123,26 @@ app.controller('Issues', function ($scope, $route, $http, $routeParams) {
         //});   
 });
 
+app.controller('Settings', function ($scope, $route, $http, $routeParams) {
+  console.log("SETTINGS");
+        console.log($routeParams);
+        //console.log($element);
+        //const domNode = "";
+        //render(<Issue />, document.getElementById('app2app'));
+        render(<Setting title="Settings" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
+                // $scope is local to controller, use global if sharing between controllers
+        //       $scope.result = response.data.resp;
+        //});   
+});
+
 app.controller('Schedules', function ($scope, $route, $http, $routeParams) {
 
         console.log($routeParams);
         //console.log($element);
         //const domNode = "";
         //render(<Issue />, document.getElementById('app2app'));
-        render(<Main title="Schedules" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
+        render(<Setting title="Schedules" httpClient={$http} params={$routeParams} />, document.getElementById('app2app'));
         //$http.get(chrome.addBasePath('/api/mimer/cluster_stats')).then((response) => {
                 // $scope is local to controller, use global if sharing between controllers
         //       $scope.result = response.data.resp;

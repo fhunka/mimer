@@ -52,7 +52,7 @@ const initialQuery = "{\n  \"query\": {\n    \"match_all\": {}\n  }\n}";
 
 let toastId = 0;
 
-export class QueryPage extends React.Component {
+export class Setting extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,7 +75,10 @@ export class QueryPage extends React.Component {
 			active: false,
 			scheduled: false
 		},
-		toasts: []
+		toasts: [],
+    tier1: "[]",
+    tier2: "[]",
+    tier3: "[]"
 	};
 
 	this.levels = [
@@ -392,6 +395,10 @@ export class QueryPage extends React.Component {
 	const valid = this.state.valid;
 	const item_exists = this.state.item_exists;
 	
+  const tier1 = this.state.tier1;
+  const tier2 = this.state.tier2;
+  const tier3 = this.state.tier3;
+  
 	const {item} = this.state;
 
 	return (
@@ -434,7 +441,7 @@ export class QueryPage extends React.Component {
           <EuiPageContent>
             <EuiPageContentHeader>
               <EuiTitle>
-                <h1>Queries</h1>
+                <h1>Settings</h1>
               </EuiTitle>
             </EuiPageContentHeader>
 	    <EuiPageContentBody>
@@ -448,151 +455,105 @@ export class QueryPage extends React.Component {
 
 					<EuiFlexGroup>
 						<EuiFlexItem>
+              <EuiTitle size="xs">
+                <h3>Tier 1 categories</h3>
+              </EuiTitle>
+							<EuiText>asd</EuiText>
+						</EuiFlexItem>
+              
+            <EuiFlexItem>
+              
 							<EuiFormRow
 								fullWidth
 								label="Index"
 								helpText="I am some friendly help text."
 								>
-								<EuiFieldText value={item.index} fullWidth name="index" onChange={this.handleIndex} />
+  				<EuiCodeEditor
+  		        mode="javascript"
+  		        theme="github"
+  		        width="100%"
+  		        value={tier1}
+  		        onChange={this.handleQuery}
+  		        setOptions={{
+  		          fontSize: '14px',
+  		          enableBasicAutocompletion: true,
+  		          enableSnippets: true,
+  		          enableLiveAutocompletion: true,
+  		        }}
+  		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
+  		      />
 							</EuiFormRow>
-						</EuiFlexItem>
-						<EuiFlexItem>
-							<EuiFormRow
-								fullWidth
-								label="Name"
-								helpText="I am some friendly help text."
-								>
-								<EuiFieldText value={item.name} fullWidth name="name" onChange={this.handleName} />
-							</EuiFormRow>
-						</EuiFlexItem>
-						
-						<EuiFlexItem>
-							<EuiFlexGrid columns={3}>
-							     <EuiFlexItem>
-									<EuiFormRow
-										fullWidth
-										label="Active"
-										helpText="Only active queries are pulled."
-										>
-										<EuiSwitch 
-											id="active"
-											name={"asd"} 
-											onChange={this.handleActive} 
-											checked={item.active}
-											/>
-									</EuiFormRow>
-								</EuiFlexItem>
-								<EuiFlexItem>
-									<EuiFormRow
-								fullWidth
-								label="Scheduled"
-								helpText="Scheduled queries are repeated."
-								>
-								<EuiSwitch 
-									id="scheduled"
-									name={"sch"} 
-									onChange={this.handleScheduled} 
-									checked={item.scheduled}
-								/>
-							</EuiFormRow>
-						</EuiFlexItem>
-						
-						<EuiFlexItem>
-							<EuiFormRow
-								fullWidth
-								label="Severity"
-								helpText="Severity if matches are found."
-								>
-								<Fragment>
-								<EuiRange
-									fullWidth
-								          id="range"
-								          min={1}
-								          max={10}
-								          step={1}
-								          value={item.severity}
-								          onChange={this.onChange}
-								          aria-label="Use aria labels when no actual label is in use"
-								          aria-describedby="levelsHelp"
-								        />
-								</Fragment>
-							</EuiFormRow>
-						</EuiFlexItem>
-						</EuiFlexGrid>
-						</EuiFlexItem>
+            </EuiFlexItem>
+              
 					</EuiFlexGroup>
-				
+              
 					<EuiFlexGroup>
 						<EuiFlexItem>
-						<EuiFormRow label="Query" 
-						fullWidth
-						>
-				<EuiCodeEditor
-		        mode="javascript"
-		        theme="github"
-		        width="100%"
-		        value={item.query}
-		        onChange={this.handleQuery}
-		        setOptions={{
-		          fontSize: '14px',
-		          enableBasicAutocompletion: true,
-		          enableSnippets: true,
-		          enableLiveAutocompletion: true,
-		        }}
-		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
-		      />
-		</EuiFormRow>
+              <EuiTitle size="xs">
+                <h3>Tier 1 categories</h3>
+              </EuiTitle>
+							<EuiText>asd</EuiText>
 						</EuiFlexItem>
-						<EuiFlexItem>
-						<EuiFormRow label="Formatted query" 
-						fullWidth
-						>
-							<EuiCodeBlock language="js">
-				              { JSON.stringify(item, Object.keys(item).sort(), 2) }
-				            </EuiCodeBlock>
-				</EuiFormRow>
-						</EuiFlexItem>
+              
+            <EuiFlexItem>
+              
+							<EuiFormRow
+								fullWidth
+								label="Index"
+								helpText="I am some friendly help text."
+								>
+  				<EuiCodeEditor
+  		        mode="javascript"
+  		        theme="github"
+  		        width="100%"
+  		        value={tier2}
+  		        onChange={this.handleQuery}
+  		        setOptions={{
+  		          fontSize: '14px',
+  		          enableBasicAutocompletion: true,
+  		          enableSnippets: true,
+  		          enableLiveAutocompletion: true,
+  		        }}
+  		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
+  		      />
+							</EuiFormRow>
+            </EuiFlexItem>
+              
 					</EuiFlexGroup>
-		  	
-				<EuiFlexGroup>
-					<EuiFlexItem grow={false}>
-					
-						{item_exists ? (
-							<div>
-								<EuiButton
-								  fill
-								  isDisabled={!valid}
-									onClick={this.updateQuery}
-						        >
-									Update
-						        </EuiButton>
-							</div>
-						) : (
-
-					<div>
-					<EuiButton
-					  fill
-					  isDisabled={!valid}
-						onClick={this.saveQuery}
-			        >
-						Save
-			        </EuiButton>
-					</div>
-					)}
-					
-					        
-					      </EuiFlexItem>
-
-					      <EuiFlexItem grow={false}>
-					        <EuiButton
-					          fill
-								color="secondary"
-								onClick={this.validateQuery}
-					        >
-								Validate
-					        </EuiButton>
-					      </EuiFlexItem>
-				</EuiFlexGroup>
+              
+					<EuiFlexGroup>
+						<EuiFlexItem>
+              <EuiTitle size="xs">
+                <h3>Tier 1 categories</h3>
+              </EuiTitle>
+							<EuiText>asd</EuiText>
+						</EuiFlexItem>
+              
+            <EuiFlexItem>
+              
+							<EuiFormRow
+								fullWidth
+								label="Index"
+								helpText="I am some friendly help text."
+								>
+  				<EuiCodeEditor
+  		        mode="javascript"
+  		        theme="github"
+  		        width="100%"
+  		        value={tier3}
+  		        onChange={this.handleQuery}
+  		        setOptions={{
+  		          fontSize: '14px',
+  		          enableBasicAutocompletion: true,
+  		          enableSnippets: true,
+  		          enableLiveAutocompletion: true,
+  		        }}
+  		        onBlur={() => { console.log('blur'); }} // eslint-disable-line no-console
+  		      />
+							</EuiFormRow>
+            </EuiFlexItem>
+              
+					</EuiFlexGroup>
 				
 			</EuiForm>
 			</Fragment>
